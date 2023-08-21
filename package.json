@@ -18,6 +18,7 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
+    "semantic-release-preconfigured-conventional-commits": "1.1.43",
     "eslint-plugin-vue": "^8.0.3"
   },
   "eslintConfig": {
@@ -39,5 +40,8 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "engines": {
+    "node": "18.17"
+  }
 }
