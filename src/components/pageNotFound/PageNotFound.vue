@@ -1,6 +1,6 @@
 <template>
   <h1>Page Not Found!</h1>
-  <img src="../../assets/404.jpg" />
+  <img src="../../assets/img/404.jpg" />
 </template>
   
 <script>
