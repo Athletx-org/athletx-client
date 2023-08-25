@@ -11,6 +11,6 @@ export default {
 
     provaGet() {
         return apiClient.get('/prova')
-    }
-
+    },
+    apiClient
 }
