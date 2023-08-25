@@ -14,8 +14,6 @@
               </h2>
             </div>
           </v-col>
-
-          <!-- Image Column -->
           <v-col cols="12" md="6">
             <div class="image-container">
               <img :src="require('@/assets/img/home_background.jpg')" alt="Homepage Image" class="image">
@@ -72,9 +70,11 @@ export default {
   font-style: italic;
   text-align: center;
 }
+
 .last-char {
   color: #1298d2
 }
+
 .subtitle {
   font-size: 30px;
   font-style: italic;
@@ -92,4 +92,5 @@ export default {
   max-width: 50%;
   height: auto;
 }
+
 </style>
