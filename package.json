@@ -12,10 +12,13 @@
     "@vue/cli-plugin-unit-jest": "^5.0.8",
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
+    "vee-validate": "^4.11.3",
     "vue": "^3.2.13",
     "vue-router": "^4.2.4",
     "vuetify": "^3.3.14",
-    "webpack-plugin-vuetify": "^2.0.1"
+    "vuex": "^4.1.0",
+    "webpack-plugin-vuetify": "^2.0.1",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
