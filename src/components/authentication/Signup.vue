@@ -1,25 +1,36 @@
 <template>
-    <h2> Signup </h2>
-    <div>
-        <form @submit.prevent="submitForm">
-            <input v-model="email" type="text" placeholder="Email">
-            <input v-model="name" type="text" placeholder="Name">
-            <input v-model="surname" type="text" placeholder="Surname">
-            <input v-model="height" type="text" placeholder="Height(cm)">
-            <input v-model="weight" type="text" placeholder="Wight(kg)">
-            <input v-model="birthdate" type="text" placeholder="Birthdate">
-            <input v-model="gender" type="text" placeholder="Gender">
-            <input v-model="password" type="password" placeholder="Password">
-            <input v-model="confirmPassword" type="password" placeholder="Confirm Password">
-            <button type="submit">Signup</button>
-        </form>
-    </div>
+    <v-main>
+        <v-container fluid>
+            <v-row justify="center">
+                <v-col cols="12" xs="10" md="4" l="4" xl="2">
+                    <v-form @submit.prevent="handleSignup">
+                        <v-text-field v-model="email" variant="outlined" rounded label="Email" required></v-text-field>
+                        <v-text-field v-model="name" variant="outlined" rounded label="Name" required></v-text-field>
+                        <v-text-field v-model="surname" variant="outlined" rounded label="Surname" required></v-text-field>
+                        <v-text-field v-model="height" variant="outlined" rounded label="Height" type="number"
+                            required></v-text-field>
+                        <v-text-field v-model="weight" variant="outlined" rounded label="Weight" type="number"
+                            required></v-text-field>
+
+                        <v-btn-toggle v-model="gender" rounded class="rounded-pill mb-4">
+                            <v-btn :value="male" rounded class="flat" :color="'blue'">Male</v-btn>
+                            <v-btn :value="female" class="flat" :color="'pink'">Female</v-btn>
+                        </v-btn-toggle>
+                        <div v-if="genderNotSelected" class="error-message"></div>
+                        <!-- <v-date-picker></v-date-picker>                        -->
+                        <v-text-field v-model="password" variant="outlined" rounded label="Password" type="password"
+                            required></v-text-field>
+                        <v-text-field v-model="confirmPassword" variant="outlined" rounded label="Confirm Password"
+                            type="password" required></v-text-field>
+                        <v-btn type="submit" color="primary">Register</v-btn>
+                    </v-form>
+                </v-col>
+            </v-row>
+        </v-container>
+    </v-main>
 </template>
   
-  
 <script>
-import api from '@/services/api';
-
 export default {
     data() {
         return {
@@ -28,35 +39,46 @@ export default {
             surname: '',
             height: '',
             weight: '',
-            birthdate: '', 
-            gender: '',            
+            birthdate: '',
+            gender: '',
             password: '',
             confirmPassword: ''
         };
     },
+
+    computed: {
+        genderNotSelected() {
+            return !this.gender;
+        },
+        loggedIn() {
+            return this.$store.state.auth.status.loggedIn;
+        }
+    },
+    mounted() {
+        if (this.loggedIn) {
+            this.$router.push("/profile");
+        }
+    },
     methods: {
-        submitForm() {
-            const formData = {
+        handleSignup() {
+            const user = {
                 email: this.email,
                 name: this.name,
                 surname: this.surname,
                 height: this.height,
                 weight: this.weight,
-                birthdate: this.birthdate, 
-                gender: this.gender,            
+                birthdate: "2019-05-15T00:00:00.000Z",
+                gender: "male",
                 password: this.password,
                 password_confirm: this.confirmPassword
             };
-
-            api.apiClient.post('/auth/registerAthlete', formData)
-                .then(response => {
-                    console.log('Risposta dal server:', response.data);
-                    this.$router.push('/login');
-
-                })
-                .catch(error => {
-                    console.error('Errore durante la richiesta:', error.response);
-                });
+            console.log(user)
+            this.$store.dispatch("auth/register", user)
+                .then(
+                    () => {
+                        this.$router.push("/login")
+                    }
+                )
         }
     }
 };

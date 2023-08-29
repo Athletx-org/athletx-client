@@ -22,14 +22,9 @@
         </v-row>
       </v-container>
     </v-main>
-    <div class="home">
-        <h1> HomePage</h1>
-    </div>
-    <login /> 
 </template>
 
 <script>
-import api from "../../services/api"
 import AppBar from "../../components/appbar/AppBar.vue";
 
 export default {
@@ -43,21 +38,8 @@ export default {
       imageSrc: '@/assets/img/home_background.jpg',
       title: "Athlet"
     }
-  },
-  created() {
-    this.tryServerRequest();
-  },
-  methods: {
-    async tryServerRequest() {
-      try {
-        const response = await api.provaGet()
-        this.serverMsg = response.data()
-      } catch (error) {
-        console.error(error)
-      }
-    }
   }
-};
+}
 </script>
 
 <style scoped>
