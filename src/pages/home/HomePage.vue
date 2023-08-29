@@ -1,6 +1,4 @@
 <template>
-  <AppBar title=""/>
-    <v-main class="pt-0">
       <v-container fluid>
         <v-row>
           <!-- Title Column -->
@@ -21,17 +19,12 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-main>
 </template>
 
 <script>
-import AppBar from "../../components/appbar/AppBar.vue";
 
 export default {
   name: "HomePage",
-  components: {
-    AppBar,
-  },
   data() {
     return {
       serverMsg: [],

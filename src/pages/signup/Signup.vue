@@ -1,5 +1,4 @@
 <template>
-    <v-main>
         <v-container fluid>
             <v-row justify="center">
                 <v-col cols="12" xs="10" md="4" l="4" xl="2">
@@ -27,7 +26,6 @@
                 </v-col>
             </v-row>
         </v-container>
-    </v-main>
 </template>
   
 <script>
@@ -56,7 +54,7 @@ export default {
     },
     mounted() {
         if (this.loggedIn) {
-            this.$router.push("/profile");
+            this.$router.push("/dashboard");
         }
     },
     methods: {
