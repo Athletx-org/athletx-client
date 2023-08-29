@@ -2,26 +2,36 @@
     <div>
         {{ data }}
     </div>
+    <v-btn @click.prevent="logout">
+        <span>Logout</span>
+      </v-btn>
   </template>
   
   <script>
-  import axios from 'axios';
+import userService from '@/services/user.service';
   
   export default {
     data() {
       return {
-        data: null
+        data: ""
       };
+    },
+    created() {
+      this.fetchData();
     },
     methods: {
       fetchData() {
-        axios.get('/information')
-          .then(response => {
-            this.data = response.data;
+        userService.getUserInfo()
+          .then(() => {
+            this.data = "profile";
           })
           .catch(error => {
             console.error('Errore durante la richiesta:', error);
           });
+      }, 
+      logout(){
+        this.$store.dispatch("auth/logout")
+        this.$router.push("/login")
       }
     }
   };
