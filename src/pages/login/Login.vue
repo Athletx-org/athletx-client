@@ -25,7 +25,7 @@ export default {
     },
     created() {
         if (this.loggedIn) {
-            this.$router.push("/profile");
+            this.$router.push("/dashboard");
         }
     },
     methods: {
@@ -35,11 +35,10 @@ export default {
                 email: this.email, 
                 password: this.password
             }
-            console.log(user)
             this.$store.dispatch("auth/login", user)
                 .then(
                     () => {
-                        this.$router.push("/profile")
+                        this.$router.push("/dashboard")
                     }
                 )
         }
