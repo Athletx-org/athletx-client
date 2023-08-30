@@ -71,7 +71,7 @@ export default {
                 password_confirm: this.confirmPassword
             };
             console.log(user)
-            this.$store.dispatch("auth/register", user)
+            this.$store.dispatch("auth/signup", user)
                 .then(
                     () => {
                         this.$router.push("/login")

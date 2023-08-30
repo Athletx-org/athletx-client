@@ -25,14 +25,14 @@ export const auth = {
       AuthService.logout();
       commit('logout');
     },
-    register({ commit }, user) {
-      return AuthService.register(user).then(
+    signup({ commit }, user) {
+      return AuthService.signup(user).then(
         response => {
-          commit('registerSuccess');
+          commit('signupSuccess');
           return Promise.resolve(response.data);
         },
         error => {
-          commit('registerFailure');
+          commit('signupFailure');
           return Promise.reject(error);
         }
       );
@@ -51,10 +51,10 @@ export const auth = {
       state.status.loggedIn = false;
       state.user = null;
     },
-    registerSuccess(state) {
+    signupSuccess(state) {
       state.status.loggedIn = false;
     },
-    registerFailure(state) {
+    signupFailure(state) {
       state.status.loggedIn = false;
     }
   }
