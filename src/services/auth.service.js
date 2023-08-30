@@ -1,7 +1,7 @@
 import axiosInstance from '@/utils/axios';
 class AuthService{
     login(user){
-        return axiosInstance.post("/auth/loginAthlete", user)
+        return axiosInstance.post("/auth/login", user)
             .then(response => {
                 const user = response.data.user
                 if (user) {
@@ -13,14 +13,14 @@ class AuthService{
 
     logout(){
         const user = localStorage.getItem("user")
-        return axiosInstance.post("/auth/logoutAthlete", user)
+        return axiosInstance.post("/auth/logout", user)
             .then(() => {
                 localStorage.removeItem('user');
             })
     }
 
-    register(user){
-        return axiosInstance.post("/auth/registerAthlete", user)
+    signup(user){
+        return axiosInstance.post("/auth/signup", user)
     }
 }
 
