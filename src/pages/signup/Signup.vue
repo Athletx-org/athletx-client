@@ -82,3 +82,4 @@ export default {
 };
 
 </script>
+<style src="./Signup.scss" lang="scss" scoped />

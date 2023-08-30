@@ -35,41 +35,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.title-container {
-  margin-top: 100pt;
-  display: compact;
-   align-items: center;
-   justify-content: center;
-   height: 100%;
- }
-
-.title {
-  font-size: 60px;
-  font-style: italic;
-  text-align: center;
-}
-
-.last-char {
-  color: #1298d2
-}
-
-.subtitle {
-  font-size: 30px;
-  font-style: italic;
-  text-align: center;
-}
-
-.image-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.image {
-  max-width: 50%;
-  height: auto;
-}
-
-</style>
+<style src="./HomePage.scss" lang="scss" scoped />

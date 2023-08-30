@@ -30,4 +30,5 @@ import userService from '@/services/user.service';
     }
   };
   </script>
-  
+
+<style src="./Dashboard.scss" lang="scss" scoped />

@@ -50,17 +50,4 @@ export default {
 };
 </script>
 
-
-<style scoped>
-
-img {
-  margin-top: 10pt;
-  max-width: 45px;
-}
-
-.v-btn {
-  background-color: #C7EEFF;
-  margin: 3px;
-}
-
-</style>
+<style src="./AppBar.scss"  lang="scss" scoped />
