@@ -4,7 +4,7 @@ import HomePage from "../pages/home/HomePage.vue";
 import PageNotFound from "../pages/notFound/PageNotFound.vue";
 import Login from "../pages/login/Login.vue";
 import Signup from "../pages/signup/Signup.vue";
-import Dashboard from "../pages/dashboard/dashboard.vue";
+import Dashboard from "../pages/dashboard/Dashboard.vue";
 import store from '@/store'
 
 

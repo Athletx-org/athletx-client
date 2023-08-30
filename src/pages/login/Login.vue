@@ -44,5 +44,6 @@ export default {
         }
     }
 };
-
 </script>
+
+<style src="./Login.scss" lang="scss" scoped />

@@ -18,3 +18,5 @@ export default {
   }
 };
 </script>
+
+<style src="./style/App.scss" lang="scss" />

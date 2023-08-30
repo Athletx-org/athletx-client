@@ -1,0 +1,35 @@
+.title-container {
+  margin-top: 60pt;
+  display: compact;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.title {
+  font-size: 80px;
+  font-style: italic;
+  text-align: center;
+}
+
+.last-char {
+  color: #1298d2
+}
+
+.subtitle {
+  font-size: 40px;
+  font-style: italic;
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.image {
+  max-width: 50%;
+  height: auto;
+}
