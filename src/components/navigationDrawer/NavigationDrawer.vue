@@ -3,12 +3,19 @@
         <v-navigation-drawer
             app
             v-model="isDrawerVisible"
+            permanent
+            class="bg-cyan-darken-4"
         >
+          <v-list-item
+              prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
+              title="Admin Admin"
+          >
+          </v-list-item>
           <v-list density="compact" nav>
             <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" value="dashboard" to="/dashboard"></v-list-item>
-            <v-list-item prepend-icon="mdi-forum" title="Workouts" value="workouts" to="/"></v-list-item>
-            <v-list-item prepend-icon="mdi-forum" title="Profile" value="profile" to="/profile"></v-list-item>
-            <v-list-item prepend-icon="mdi-forum" title="Analytics" value="analytics" to="/"></v-list-item>
+            <v-list-item prepend-icon="mdi-folder" title="Workouts" value="workouts" to="/"></v-list-item>
+            <v-list-item prepend-icon="mdi-account" title="Profile" value="profile" to="/profile"></v-list-item>
+            <v-list-item prepend-icon="mdi-trending-up" title="Analytics" value="analytics" to="/"></v-list-item>
           </v-list>
         </v-navigation-drawer>
     </v-card>
