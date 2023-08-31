@@ -4,7 +4,7 @@
         elevation="4"
         @click="toggleDrawerVisibility"
     >
-      <v-icon icon="$vuetify"/>
+      <v-icon icon="mdi-menu" size="large"/>
       <v-spacer></v-spacer>
     </v-btn>
     <v-spacer></v-spacer>

@@ -1,6 +1,9 @@
 import 'vuetify/styles'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+import '@mdi/font/css/materialdesignicons.css'
+import { aliases, fa } from 'vuetify/iconsets/fa'
+import { mdi } from 'vuetify/iconsets/mdi'
 import {createVuetify} from 'vuetify'
 
 export default createVuetify({
@@ -25,6 +28,14 @@ export default createVuetify({
                     warning: '#FB8C00'
                 },
             }
-        }
+        },
+        icons: {
+            defaultSet: 'fa',
+            aliases,
+            sets: {
+                fa,
+                mdi,
+            },
+        },
     }
 })
