@@ -1,9 +1,11 @@
 import { createStore } from "vuex";
-import { auth } from "./auth.module";
+import { auth } from "@/store/auth.module";
+import { drawer} from "@/store/drawer.module";
 
 const store = createStore({
   modules: {
     auth,
+    drawer,
   },
 });
 

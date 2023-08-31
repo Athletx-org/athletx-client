@@ -1,12 +1,15 @@
 <template>
+  <v-main>
     <h2>Login</h2>
     <div>
-        <v-form @submit.prevent="handleLogin">
-            <v-text-field v-model="email" type="text" placeholder="Username" />
-            <v-text-field v-model="password" type="password" placeholder="Password" />
-            <button type="submit">Invia</button>
-        </v-form>
+      <v-form @submit.prevent="handleLogin">
+        <v-text-field v-model="email" type="text" placeholder="Username" />
+        <v-text-field v-model="password" type="password" placeholder="Password" />
+        <button type="submit">Invia</button>
+      </v-form>
     </div>
+  </v-main>
+
 </template>
   
 <script>
@@ -29,7 +32,6 @@ export default {
         }
     },
     methods: {
-      
         handleLogin() {
             const user = {
                 email: this.email, 

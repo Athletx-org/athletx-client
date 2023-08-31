@@ -1,5 +1,4 @@
 <template>
-  <v-row>
     <v-app-bar app color="light">
       <router-link to="/home">
         <img
@@ -26,7 +25,6 @@
         <span>Logout</span>
       </v-btn>
     </v-app-bar>
-  </v-row>
 </template>
 
 
