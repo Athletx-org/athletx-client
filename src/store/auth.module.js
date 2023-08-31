@@ -57,5 +57,8 @@ export const auth = {
     signupFailure(state) {
       state.status.loggedIn = false;
     }
-  }
+  },
+  getters: {
+    isLoggedIn: (state) => state.status.loggedIn
+    }
 };
