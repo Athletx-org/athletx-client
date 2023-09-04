@@ -5,10 +5,11 @@ import PageNotFound from "@/pages/notFound/PageNotFound.vue";
 import Login from "@/pages/login/Login.vue";
 import Layout from "@/pages/layout/Layout";
 import Dashboard from "@/pages/dashboard/Dashboard";
-import Signup from "@/pages/signup/Signup.vue";
-import store from "@/store";
 import Profile from "@/pages/profile/Profile";
+import Signup from "@/pages/signup/Signup.vue";
+import Workouts from "@/pages/workouts/Workouts";
 import NewWorkout from "@/pages/newWorkout/NewWorkout";
+import store from "@/store";
 
 const routes = [
   {
@@ -26,22 +27,27 @@ const routes = [
       requiresAuth: true,
     },
     children: [
-      {
-        path: "",
-        name: "dashboard",
-        component: Dashboard,
-      },
-      {
-        path: "/profile",
-        name: "Profile",
-        component: Profile,
-      },
-      {
+    {
+      path: '',
+      name: 'dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
+    },
+    {
+      path: '/workouts',
+      name: 'Workouts',
+      component: Workouts
+    },
+    {
         path: "/newWorkout",
         name: "NewWorkout",
         component: NewWorkout,
-      },
-    ],
+    },
+    ]
   },
 
   { path: "/:pathMatch(.*)*", name: "not-found", component: PageNotFound },
