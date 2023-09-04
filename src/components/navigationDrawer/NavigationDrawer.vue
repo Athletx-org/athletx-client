@@ -1,10 +1,10 @@
 <template>
-    <v-card>
         <v-navigation-drawer
             app
             v-model="isDrawerVisible"
             permanent
             class="bg-cyan-darken-4"
+
         >
           <v-list-item
               prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
@@ -16,14 +16,37 @@
             <v-list-item prepend-icon="mdi-folder" title="Workouts" value="workouts" to="/"></v-list-item>
             <v-list-item prepend-icon="mdi-account" title="Profile" value="profile" to="/profile"></v-list-item>
             <v-list-item prepend-icon="mdi-trending-up" title="Analytics" value="analytics" to="/"></v-list-item>
+            <v-list-item prepend-icon="mdi-trending-up" title="New Workout" value="newWorkout" to="/newWorkout"></v-list-item>
           </v-list>
         </v-navigation-drawer>
-    </v-card>
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import { mapMutations } from 'vuex';
 export default {
   name: "NavigationDrawer",
+  data() {
+    return {
+    };
+  },
+  created() {
+    this.setVisibility(this.$vuetify.display.smAndDown);
+  },
+  methods: {
+    handleResize() {
+      this.setVisibility(this.$vuetify.display.smAndDown);
+    },
+    ...mapMutations("drawer", ["setDrawerVisibility"]),
+    setVisibility(state){
+      this.setDrawerVisibility(!state); 
+    }
+  },
+  mounted() {
+    window.addEventListener('resize', this.handleResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  },
   computed: {
     ...mapGetters('drawer', ['isDrawerVisible'])
   },
