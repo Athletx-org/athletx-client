@@ -1,22 +1,18 @@
 import axiosInstance from '@/utils/axios';
 class AuthService{
-    login(user){
-        return axiosInstance.post("/auth/login", user)
-            .then(response => {
-                const user = response.data.user
-                if (user) {
-                    localStorage.setItem('user', JSON.stringify(user));
-                }
-            return user;
-          });
+    async login(user){
+        const response = await axiosInstance.post("/auth/login", user);
+        const usr = response.data.user;
+        if (usr) {
+            localStorage.setItem('user', JSON.stringify(usr));
+        }
+        return usr;
     }
 
-    logout(){
+    async logout(){
         const user = localStorage.getItem("user")
-        return axiosInstance.post("/auth/logout", user)
-            .then(() => {
-                localStorage.removeItem('user');
-            })
+        await axiosInstance.post("/auth/logout", user);
+        localStorage.removeItem('user');
     }
 
     signup(user){
