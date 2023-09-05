@@ -16,6 +16,16 @@ class WorkoutService {
     deleteWorkout(userId, workoutId) {
         return axiosInstance.delete("/" + userId + "/workouts/" + workoutId, {headers: authHeader()})
     }
+
+    async createWorkout(userId, workout) {
+        const response = await axiosInstance.post("/" + userId + "/workouts", workout, {headers: authHeader()})
+        return response
+    }
+
+    async getDefaultExercise(){
+        const response = await axiosInstance.get("/exercises", {headers: authHeader()})
+        return response.data
+    }
 }
 
 export default new WorkoutService();
