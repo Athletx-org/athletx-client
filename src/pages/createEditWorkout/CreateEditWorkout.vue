@@ -44,11 +44,14 @@ export default {
     },
     saveWorkout(formData) {
       if (this.editing) {
-        WorkoutService.updateWorkout(this.userId, this.workoutId, formData);
+        WorkoutService.updateWorkout(this.userId, this.workoutId, formData).then(() => {
+          this.$router.push("/workouts")
+        })
       } else {
-        WorkoutService.createWorkout(this.userId, formData)
+        WorkoutService.createWorkout(this.userId, formData).then(() => {
+          this.$router.push("/workouts")
+        })
       }
-      this.$router.push("/workouts")
     },
   },
 };

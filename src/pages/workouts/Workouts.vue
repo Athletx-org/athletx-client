@@ -42,7 +42,7 @@ export default {
       currentWorkout: null
     }
   },
-  mounted() {
+  created() {
     this.fetchWorkouts()
     this.fetchCurrentWorkout()
   },
