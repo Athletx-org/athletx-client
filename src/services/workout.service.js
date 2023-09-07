@@ -9,12 +9,21 @@ class WorkoutService {
                 return response.data
             })
     }
+
     getCurrentWorkout(userId) {
-        return axiosInstance.get("/" + userId + "/workouts/current", {headers: authHeader()})
+        return axiosInstance.get("/" + userId + "/workouts/info/current", {headers: authHeader()})
+            .then( response => {
+                return response.data
+            }
+        )
     }
 
     deleteWorkout(userId, workoutId) {
         return axiosInstance.delete("/" + userId + "/workouts/" + workoutId, {headers: authHeader()})
+    }
+
+    async setCurrentWorkout(userId, currentWorkout) {
+        return await axiosInstance.post("/" + userId + "/workouts/current", currentWorkout, {headers: authHeader()})
     }
 
     async createWorkout(userId, workout) {
