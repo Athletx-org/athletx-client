@@ -48,6 +48,7 @@ export default {
       } else {
         WorkoutService.createWorkout(this.userId, formData)
       }
+      this.$router.push("/workouts")
     },
   },
 };
