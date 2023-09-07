@@ -8,8 +8,8 @@ import Dashboard from "@/pages/dashboard/Dashboard";
 import Profile from "@/pages/profile/Profile";
 import Signup from "@/pages/signup/Signup.vue";
 import Workouts from "@/pages/workouts/Workouts";
-import NewWorkout from "@/pages/newWorkout/NewWorkout";
 import store from "@/store";
+import CreateEditWorkout from "@/pages/createEditWorkout/CreateEditWorkout";
 
 const routes = [
   {
@@ -20,12 +20,7 @@ const routes = [
 
   { path: "/login", name: "login", component: Login },
   { path: "/signup", name: "signup", component: Signup },
-  {
-    path: "/dashboard",
-    component: Layout,
-    meta: {
-      requiresAuth: true,
-    },
+  { path: "/dashboard", component: Layout,  meta: { requiresAuth: true },
     children: [
     {
       path: '',
@@ -43,9 +38,9 @@ const routes = [
       component: Workouts
     },
     {
-        path: "/newWorkout",
-        name: "NewWorkout",
-        component: NewWorkout,
+      path: '/workouts/:workoutId',
+      name: 'WorkoutForm',
+      component: CreateEditWorkout
     },
     ]
   },
