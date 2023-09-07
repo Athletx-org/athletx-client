@@ -1,6 +1,11 @@
 <template>
   <h1> {{ title }}</h1>
-  <v-btn to="/newWorkout" color="success">Add new workout</v-btn>
+  <div v-if="currentWorkout">
+    <h2>Current workout: {{currentWorkout.workoutId.name}}</h2>
+    <p>Starting Date: {{currentWorkout.startingDate }}</p>
+    <p>Ending Date: {{currentWorkout.endingDate }}</p>
+  </div>
+  <v-btn to="/newWorkout" color="success" >Add new workout</v-btn>
     <v-row>
       <v-col class="mt-5" cols="12" sm="3" md="4" v-for="workout in this.workouts" :key="workout._id">
         <v-card width="350" elevation="5" outlined>
@@ -9,8 +14,8 @@
             {{ workout.description }}
           </v-card-text>
           <v-card-actions>
-            <v-btn size="small" color="secondary" variant="elevated" @click="setAsCurrent(workoutId)">
-              SET AS CURRENT
+            <v-btn size="small" color="secondary" variant="elevated" @click="setAsCurrent(workout._id)">
+              START NOW
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn @click="editWorkout(workout._id)">
@@ -39,7 +44,7 @@ export default {
   },
   mounted() {
     this.fetchWorkouts()
-    //this.fetchCurrentWorkout()
+    this.fetchCurrentWorkout()
   },
   methods: {
     async fetchWorkouts() {
@@ -51,13 +56,29 @@ export default {
     async deleteWorkout(workoutId) {
       WorkoutService.deleteWorkout(this.userId, workoutId).then(() => {
         this.workouts = this.workouts.filter(workout => workout._id !== workoutId)
+        if (this.currentWorkout.workoutId._id === workoutId) {
+          this.currentWorkout = null
+        }
       })
     },
     editWorkout(workoutId){
       console.log(workoutId)
     },
     setAsCurrent(workoutId) {
-      console.log(workoutId)
+      const selectedWorkout = this.workouts.find(workout => workout._id === workoutId)
+      this.currentWorkout.workoutId.name = selectedWorkout.name
+      const startingDate = new Date()
+      let endingDate = new Date()
+      endingDate.setDate(startingDate.getDate() + selectedWorkout.duration)
+      this.currentWorkout.startingDate =  startingDate.toLocaleDateString()
+      this.currentWorkout.endingDate = endingDate.toLocaleDateString()
+      const activeWorkout = {
+        userId: this.userId,
+        workoutId: workoutId,
+        startingDate: startingDate,
+        endingDate: endingDate
+      }
+      WorkoutService.setCurrentWorkout(this.userId, activeWorkout)
     }
   }
 }
