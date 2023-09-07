@@ -52,7 +52,7 @@
                           <!-- Elemento selezionato -->
                           <div v-if="training.exercises[exIndex].exerciseId">
                             <!-- <v-chip>{{ this.default_exercises[training.exercises[exIndex].exerciseId] }}</v-chip> -->
-                            <v-chip>{{ this.default_exercises.find(item => item._id === training.exercises[exIndex].exerciseId).name }}</v-chip>
+<!--                            <v-chip>{{ this.default_exercises.find(item => item._id === training.exercises[exIndex].exerciseId).name }}</v-chip>-->
                             <v-btn @click="deleteSelectedExercise(training, exIndex)">x</v-btn>
                           </div>
                           <v-row>
@@ -95,26 +95,16 @@ export default {
   components: {
     draggable: VueDraggableNext,
   },
-
+  props: {
+    workoutData: Object
+  },
   data() {
     return {
-      workout: {
-        name: "giacomo",
-        difficulty: "",
-        description: "",
-        duration: "",
-        trainings: []
-      },
       isDragging: false,
       dialog: false,
       dialogIndex: "",
-      // default_exercises: {
-      //   "64f1d9490d80d7192be5e549": "pushup",
-      //   "64f1d98a0d80d7192be5e54a": "pulley",
-      //   "64f1d9ba0d80d7192be5e54c": "running",
-      //   "64f1d9f30d80d7192be5e54d": "crunch"
-      // },
-      default_exercises: "", 
+      workout: { ...this.workoutData},
+      default_exercises: [],
       searchQuery: ref(""),
     };
   },
@@ -173,12 +163,13 @@ export default {
       return this.default_exercises; 
     },
     sendWorkout() {
-      WorkoutService.createWorkout(this.$store.state.auth.user._id, this.workout)
+      this.$emit('submit', this.workout);
     },
     async getDefaultExercise() {
       this.default_exercises = await WorkoutService.getDefaultExercise()
-      console.log(this.default_exercises)
     }
   },
 };
 </script>
+
+<style src="./WorkoutForm.scss" lang="scss" scoped />

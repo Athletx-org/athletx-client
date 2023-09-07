@@ -5,23 +5,23 @@
     <p>Starting Date: {{currentWorkout.startingDate }}</p>
     <p>Ending Date: {{currentWorkout.endingDate }}</p>
   </div>
-  <v-btn to="/newWorkout" color="success" >Add new workout</v-btn>
+  <v-btn to="/workouts/new" color="success" >Add new workout</v-btn>
     <v-row>
       <v-col class="mt-5" cols="12" sm="3" md="4" v-for="workout in this.workouts" :key="workout._id">
-        <v-card width="350" elevation="5" outlined>
+        <v-card :to="this.$route.path+'/'+workout._id" width="350" elevation="5" outlined>
           <v-card-title> {{ workout.name }}</v-card-title>
           <v-card-text>
             {{ workout.description }}
           </v-card-text>
           <v-card-actions>
-            <v-btn size="small" color="secondary" variant="elevated" @click="setAsCurrent(workout._id)">
+            <v-btn size="small" color="secondary" variant="elevated" v-on:click.prevent @click="setAsCurrent(workout._id)">
               START NOW
             </v-btn>
             <v-spacer></v-spacer>
-            <v-btn @click="editWorkout(workout._id)">
+            <v-btn v-on:click.prevent @click="editWorkout(workout._id)">
               <v-icon size="small">mdi-pencil</v-icon>
             </v-btn>
-            <v-btn @click="deleteWorkout(workout._id)">
+            <v-btn v-on:click.prevent @click="deleteWorkout(workout._id)">
               <v-icon size="small">mdi-delete</v-icon>
             </v-btn>
           </v-card-actions>
@@ -62,7 +62,7 @@ export default {
       })
     },
     editWorkout(workoutId){
-      console.log(workoutId)
+      this.$router.push("/workouts/"+workoutId)
     },
     setAsCurrent(workoutId) {
       const selectedWorkout = this.workouts.find(workout => workout._id === workoutId)

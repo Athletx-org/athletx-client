@@ -10,6 +10,13 @@ class WorkoutService {
             })
     }
 
+    getWorkout(userId, workoutId) {
+        return axiosInstance.get("/" + userId + "/workouts/" + workoutId, {headers: authHeader()})
+            .then(response => {
+                return response.data
+            })
+    }
+
     getCurrentWorkout(userId) {
         return axiosInstance.get("/" + userId + "/workouts/info/current", {headers: authHeader()})
             .then( response => {
@@ -29,6 +36,10 @@ class WorkoutService {
     async createWorkout(userId, workout) {
         const response = await axiosInstance.post("/" + userId + "/workouts", workout, {headers: authHeader()})
         return response
+    }
+
+    updateWorkout(userId, workoutId, workout) {
+        return axiosInstance.post("/" + userId + "/workouts/" + workoutId + "/update", workout, {headers: authHeader()} )
     }
 
     async getDefaultExercise(){
