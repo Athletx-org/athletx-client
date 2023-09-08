@@ -31,12 +31,10 @@
                               Exercise </v-btn>
                             <v-dialog v-model="dialog" max-width="500px">
                               <v-card>
-                                <!-- Contenuto del dialog -->
                                 <v-card-title>Select an exercise</v-card-title>
                                 <v-card-text>
                                   <v-text-field autofocus v-model="searchQuery" label="Search Exercise" />
 
-                                  <!-- Contenuto della "pop-up page" -->
                                   <v-list>
                                     <v-list-item v-for="(ex, Index) in filterExercises()" :key="Index">
                                       <v-list-item @click="() => selectExercise(training, ex._id, exIndex)">
@@ -49,10 +47,8 @@
                               </v-card>
                             </v-dialog>
                           </div>
-                          <!-- Elemento selezionato -->
                           <div v-if="training.exercises[exIndex].exerciseId">
-                            <!-- <v-chip>{{ this.default_exercises[training.exercises[exIndex].exerciseId] }}</v-chip> -->
-<!--                            <v-chip>{{ this.default_exercises.find(item => item._id === training.exercises[exIndex].exerciseId).name }}</v-chip>-->
+                           <v-chip v-if="default_exercises">{{ getDefaultExerciseName(training, exIndex) }}</v-chip>
                             <v-btn @click="deleteSelectedExercise(training, exIndex)">x</v-btn>
                           </div>
                           <v-row>
@@ -104,7 +100,7 @@ export default {
       dialog: false,
       dialogIndex: "",
       workout: { ...this.workoutData},
-      default_exercises: [],
+      default_exercises: null,
       searchQuery: ref(""),
     };
   },
@@ -155,18 +151,16 @@ export default {
       training.exercises[exIndex].exerciseId = null;
     },
     filterExercises() {
-      // return Object.fromEntries(
-      //   Object.entries(this.default_exercises).filter(([value]) =>
-      //     value.toLowerCase().includes(this.searchQuery.toLowerCase())
-      //   )
-      // );
-      return this.default_exercises; 
+      return this.default_exercises.filter(item => item.name.toLowerCase().includes(this.searchQuery.toLowerCase()))
     },
     sendWorkout() {
       this.$emit('submit', this.workout);
     },
     async getDefaultExercise() {
       this.default_exercises = await WorkoutService.getDefaultExercise()
+    }, 
+    getDefaultExerciseName(training, exIndex){
+      return this.default_exercises.find(item => item.id === training.exercises[exIndex].id).name
     }
   },
 };
