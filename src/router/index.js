@@ -8,6 +8,7 @@ import Dashboard from "@/pages/dashboard/Dashboard";
 import Profile from "@/pages/profile/Profile";
 import Signup from "@/pages/signup/Signup.vue";
 import Workouts from "@/pages/workouts/Workouts";
+import Goal from "@/pages/goal/Goal.vue";
 import store from "@/store";
 import CreateEditWorkout from "@/pages/createEditWorkout/CreateEditWorkout";
 
@@ -41,6 +42,11 @@ const routes = [
       path: '/workouts/:workoutId',
       name: 'WorkoutForm',
       component: CreateEditWorkout
+    },
+    {
+      path: '/goal',
+      name: 'Goal',
+      component: Goal
     },
     ]
   },
