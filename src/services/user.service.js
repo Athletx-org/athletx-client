@@ -2,8 +2,11 @@ import axiosInstance from '@/utils/axios';
 import authHeader from './auth-header';
 
 class UserService{
-    getUserInfo(){
-        return axiosInstance.get("/auth/userInfo", {headers: authHeader() })
+    getUserInfo(userId){
+        return axiosInstance.get("/users/info/"+userId, {headers: authHeader() })
+            .then(response => {
+                return response.data
+            })
     }
 }
 

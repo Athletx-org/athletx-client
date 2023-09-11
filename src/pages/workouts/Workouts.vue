@@ -66,12 +66,24 @@ export default {
     },
     setAsCurrent(workoutId) {
       const selectedWorkout = this.workouts.find(workout => workout._id === workoutId)
-      this.currentWorkout.workoutId.name = selectedWorkout.name
       const startingDate = new Date()
       let endingDate = new Date()
       endingDate.setDate(startingDate.getDate() + selectedWorkout.duration)
-      this.currentWorkout.startingDate =  startingDate.toLocaleDateString()
-      this.currentWorkout.endingDate = endingDate.toLocaleDateString()
+      if(this.currentWorkout != null) {
+        this.currentWorkout.workoutId.name = selectedWorkout.name
+        this.currentWorkout.startingDate =  startingDate.toLocaleDateString()
+        this.currentWorkout.endingDate = endingDate.toLocaleDateString()
+      } else {
+        this.currentWorkout = {
+          startingDate: startingDate.toLocaleDateString(),
+          endingDate: endingDate.toLocaleDateString(),
+          workoutId: {
+            _id: workoutId,
+            name: selectedWorkout.name
+          }
+        }
+      }
+
       const activeWorkout = {
         userId: this.userId,
         workoutId: workoutId,

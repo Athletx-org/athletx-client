@@ -44,6 +44,7 @@ export default {
     },
     saveWorkout(formData) {
       if (this.editing) {
+        console.log(formData.target)
         WorkoutService.updateWorkout(this.userId, this.workoutId, formData).then(() => {
           this.$router.push("/workouts")
         })
