@@ -38,8 +38,8 @@ class WorkoutService {
         return response
     }
 
-    updateWorkout(userId, workoutId, workout) {
-        return axiosInstance.post("/" + userId + "/workouts/" + workoutId + "/update", workout, {headers: authHeader()} )
+    async updateWorkout(userId, workoutId, workout) {
+        return axiosInstance.patch("/" + userId + "/workouts/" + workoutId, workout, {headers: authHeader()} )
     }
 
     async getDefaultExercise(){
