@@ -16,6 +16,8 @@
             <v-list-item prepend-icon="mdi-folder" title="Workouts" value="workouts" to="/workouts"></v-list-item>
             <v-list-item prepend-icon="mdi-account" title="Profile" value="profile" to="/profile"></v-list-item>
             <v-list-item prepend-icon="mdi-trending-up" title="Analytics" value="analytics" to="/analytics"></v-list-item>
+            <v-list-item prepend-icon="mdi-trending-up" title="Analytics" value="analytics" to="/"></v-list-item>
+            <v-list-item prepend-icon="mdi-trending-up" title="Goal" value="goal" to="/goal"></v-list-item>
           </v-list>
         </v-navigation-drawer>
 </template>
