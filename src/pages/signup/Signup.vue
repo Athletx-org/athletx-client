@@ -56,7 +56,7 @@ export default {
     },
     mounted() {
         if (this.loggedIn) {
-            this.$router.push("/Layout");
+            this.$router.push("/dashboard");
         }
     },
     methods: {
@@ -72,7 +72,6 @@ export default {
                 password: this.password,
                 password_confirm: this.confirmPassword
             };
-            console.log(user)
             this.$store.dispatch("auth/signup", user)
                 .then(
                     () => {
