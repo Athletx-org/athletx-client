@@ -64,7 +64,7 @@ export default {
     editWorkout(workoutId){
       this.$router.push("/workouts/"+workoutId)
     },
-    setAsCurrent(workoutId) {
+    async setAsCurrent(workoutId) {
       const selectedWorkout = this.workouts.find(workout => workout._id === workoutId)
       const startingDate = new Date()
       let endingDate = new Date()
@@ -90,7 +90,7 @@ export default {
         startingDate: startingDate,
         endingDate: endingDate
       }
-      WorkoutService.setCurrentWorkout(this.userId, activeWorkout)
+      return await WorkoutService.setCurrentWorkout(this.userId, activeWorkout)
     }
   }
 }
