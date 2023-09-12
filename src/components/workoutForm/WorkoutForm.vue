@@ -37,7 +37,7 @@
 
                                   <v-list>
                                     <v-list-item v-for="(ex, Index) in filterExercises()" :key="Index">
-                                      <v-list-item @click="() => selectExercise(training, ex._id, exIndex)">
+                                      <v-list-item @click="() => selectExercise(training, ex._id)">
                                         {{ ex.name }} (Muscle: {{ ex.muscle }}, Type: {{ ex.type }})
                                       </v-list-item>
                                     </v-list-item>
@@ -145,7 +145,6 @@ export default {
     selectExercise(training, exercise) {
       training.exercises[this.dialogIndex].exerciseId = exercise
       this.closeDialog();
-
     },
     deleteSelectedExercise(training, exIndex) {
       training.exercises[exIndex].exerciseId = null;
@@ -160,7 +159,7 @@ export default {
       this.default_exercises = await WorkoutService.getDefaultExercise()
     }, 
     getDefaultExerciseName(training, exIndex){
-      return this.default_exercises.find(item => item.id === training.exercises[exIndex].id).name
+       return this.default_exercises.find(item => item._id === training.exercises[exIndex].exerciseId).name
     }
   },
 };
