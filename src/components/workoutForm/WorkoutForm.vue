@@ -37,7 +37,7 @@
 
                                   <v-list>
                                     <v-list-item v-for="(ex, Index) in filterExercises()" :key="Index">
-                                      <v-list-item @click="() => selectExercise(training, ex._id)">
+                                      <v-list-item @click="() => selectExercise(training, ex)">
                                         {{ ex.name }} (Muscle: {{ ex.muscle }}, Type: {{ ex.type }})
                                       </v-list-item>
                                     </v-list-item>
@@ -159,7 +159,7 @@ export default {
       this.default_exercises = await WorkoutService.getDefaultExercise()
     }, 
     getDefaultExerciseName(training, exIndex){
-       return this.default_exercises.find(item => item._id === training.exercises[exIndex].exerciseId).name
+       return this.default_exercises.find(item => item._id === training.exercises[exIndex].exerciseId._id).name
     }
   },
 };
