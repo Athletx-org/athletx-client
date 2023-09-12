@@ -44,8 +44,8 @@ const routes = [
       component: CreateEditWorkout
     },
     {
-      path: '/goal',
-      name: 'Goal',
+      path: '/goals',
+      name: 'Goals',
       component: Goal
     },
     ]

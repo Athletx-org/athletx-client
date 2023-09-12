@@ -8,6 +8,11 @@ class UserService{
                 return response.data
             })
     }
+    updateUserInfo(userId, userInfo){
+        const contentType = {'Content-Type': 'multipart/form-data'}
+        return axiosInstance.patch("/users/info/"+userId, userInfo,
+            {headers: {...authHeader(),...contentType }})
+    }
 }
 
 export default new UserService(); 
