@@ -1,12 +1,11 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
+import Authentication from "@/pages/authentication/Authentication";
 import HomePage from "@/pages/home/HomePage.vue";
 import PageNotFound from "@/pages/notFound/PageNotFound.vue";
-import Login from "@/pages/login/Login.vue";
 import Layout from "@/pages/layout/Layout";
 import Dashboard from "@/pages/dashboard/Dashboard";
 import Profile from "@/pages/profile/Profile";
-import Signup from "@/pages/signup/Signup.vue";
 import Workouts from "@/pages/workouts/Workouts";
 import Goal from "@/pages/goal/Goal.vue";
 import store from "@/store";
@@ -19,8 +18,8 @@ const routes = [
     alias: "/home",
   },
 
-  { path: "/login", name: "login", component: Login },
-  { path: "/signup", name: "signup", component: Signup },
+  { path: "/login", name: "login", component: Authentication },
+  { path: "/signup", name: "signup", component: Authentication },
   { path: "/dashboard", component: Layout,  meta: { requiresAuth: true },
     children: [
     {

@@ -3,14 +3,8 @@
             app
             v-model="isDrawerVisible"
             permanent
-            class="bg-cyan-darken-4"
-
+            class="bg-blue-darken-1"
         >
-          <v-list-item
-              prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
-              title="Admin Admin"
-          >
-          </v-list-item>
           <v-list density="compact" nav>
             <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" value="dashboard" to="/dashboard"></v-list-item>
             <v-list-item prepend-icon="mdi-folder" title="Workouts" value="workouts" to="/workouts"></v-list-item>
@@ -35,6 +29,10 @@ export default {
   methods: {
     handleResize() {
       this.setVisibility(this.$vuetify.display.smAndDown);
+    },
+    logout() {
+      this.$store.dispatch("auth/logout")
+      this.$router.push("/home")
     },
     ...mapMutations("drawer", ["setDrawerVisibility"]),
     setVisibility(state){

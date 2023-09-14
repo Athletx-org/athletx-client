@@ -15,14 +15,8 @@
       </v-toolbar-title>
       <v-spacer/>
 
-      <v-btn to="/login" v-if="!loggedIn">
-        <span>Login</span>
-      </v-btn>
-      <v-btn to="/signup" class="mr-5" v-if="!loggedIn">
-        <span>Signup</span>
-      </v-btn>
-      <v-btn @click.prevent="logout" class="mr-5" v-if="loggedIn">
-        <span>Logout</span>
+      <v-btn to="/login">
+        GET STARTED
       </v-btn>
     </v-app-bar>
 </template>
@@ -39,12 +33,6 @@ export default {
       return this.$store.state.auth.status.loggedIn;
     },
   },
-  methods: {
-    logout() {
-      this.$store.dispatch("auth/logout")
-      this.$router.push("/login")
-    }
-  }
 };
 </script>
 
