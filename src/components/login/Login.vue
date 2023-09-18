@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h3 class="text-center">Login in to Your Account</h3>
+    <h2 class="text-center text-decoration-underline">Login in to your account</h2>
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8">
-        <v-form fast-fail @submit.prevent="handleLogin">
+        <v-form @submit.prevent="handleLogin" class="mt-12">
           <v-text-field
               class="mt-4 bg-white"
               v-model="email"
@@ -13,7 +13,7 @@
               autocomplete="true"
           />
           <v-text-field class="mt-4 bg-white" v-model="password" type="password" placeholder="Password"/>
-          <v-btn color="blue" type="submit" dark tile>Log in</v-btn>
+          <v-btn color="blue" type="submit" dark tile elevation="6"><strong>Login</strong></v-btn>
         </v-form>
       </v-col>
     </v-row>

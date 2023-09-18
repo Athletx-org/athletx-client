@@ -18,14 +18,11 @@ export default createVuetify({
                 colors: {
                     background: '#fff',
                     surface: '#fff',
-                    primary: '#fff',
-                    'primary-darken-1': '#000',
-                    secondary: '#03DAC5',
-                    'secondary-darken-1': '#03DAC5',
-                    error: '#ff0000',
-                    info: '#2196F3',
-                    success: '#4CAF50',
-                    warning: '#FB8C00'
+                    primary: '#000',
+                    paletteBlue: '#4D6DE3',
+                    paletteLightBlue: '#C7EEFF',
+                    paletteWhite: '#F1FCFD',
+                    paletteBlack: '#393737'
                 },
             }
         },
