@@ -20,10 +20,10 @@ const routes = [
 
   { path: "/login", name: "login", component: Authentication },
   { path: "/signup", name: "signup", component: Authentication },
-  { path: "/dashboard", component: Layout,  meta: { requiresAuth: true },
+  { path: "/", component: Layout, meta: { requiresAuth: true },
     children: [
     {
-      path: '',
+      path: '/dashboard',
       name: 'dashboard',
       component: Dashboard
     },

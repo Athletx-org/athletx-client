@@ -3,7 +3,7 @@
             app
             v-model="isDrawerVisible"
             permanent
-            class="bg-blue-darken-1"
+            color="paletteBlack"
         >
           <v-list density="compact" nav>
             <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" value="dashboard" to="/dashboard"></v-list-item>

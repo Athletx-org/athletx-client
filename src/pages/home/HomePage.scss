@@ -1,9 +1,7 @@
 .title-container {
-  margin-top: 60pt;
-  display: compact;
+  padding-top: 70pt;
   align-items: center;
   justify-content: center;
-  height: 100%;
 }
 
 .title {
@@ -13,7 +11,7 @@
 }
 
 .last-char {
-  color: #1298d2
+  color: #127cd2
 }
 
 .subtitle {
@@ -23,13 +21,26 @@
 }
 
 .image-container {
-  display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
 }
 
-.image {
-  max-width: 50%;
-  height: auto;
+.background-image {
+  max-width: 35%;
+  animation: slideX 1s ease-in-out forwards;
+}
+
+.up {
+  transform: translateY(-20px);
+  transition: 0.5s ease-out;
+}
+
+@keyframes slideX {
+  0% {
+    transform: translateX(-100%); /* Slide in from the left */
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

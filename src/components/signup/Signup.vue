@@ -1,5 +1,5 @@
 <template>
-  <h3 class="text-center">Sign Up for an Account</h3>
+  <h2 class="text-center text-decoration-underline">Sign Up for an Account</h2>
   <v-row align="center" justify="center">
     <v-col cols="12" sm="6">
       <v-form fast-fail @submit.prevent="handleSignup">
@@ -42,7 +42,7 @@
             />
           </v-col>
         </v-row>
-        <v-btn type="submit" color="blue" tile>Sign up</v-btn>
+        <v-btn type="submit" color="blue" elevation="6" class="mt-5" tile>Sign up</v-btn>
       </v-form>
     </v-col>
   </v-row>

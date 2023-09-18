@@ -1,6 +1,6 @@
 <template>
   <h1>Page Not Found!</h1>
-  <v-btn to="/dashboard" color="blue" outline elevation="6"> Back to home</v-btn>
+  <v-btn to="/dashboard" color="blue" > Back to home</v-btn>
 </template>
   
 <script>
