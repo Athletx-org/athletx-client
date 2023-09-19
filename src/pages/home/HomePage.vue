@@ -25,7 +25,7 @@
         <v-col cols="12" md="5" class="text-center">
           <div class="image-container mt-10">
             <v-scroll-x-transition>
-              <img src="@/assets/img/home_backgrounds/standing_man_weights.jpg" class="background-image" alt="Homepage Image">
+              <img src="@/assets/img/home_backgrounds/standing_man_weights.jpg" class="background-image" alt="">
             </v-scroll-x-transition>
           </div>
         </v-col>
