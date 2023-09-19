@@ -19,26 +19,24 @@
             <div class="font-weight-bold">Duration (min)</div>
             <VueScrollPicker :options="durationArray" v-model="workout.duration" />
           </div>
-          <v-btn @click="addTraining" variant="outlined" class="mb-4">New Training</v-btn>
+          <v-btn prepend-icon="mdi-plus-box" @click="addTraining" variant="outlined" class="mb-4">New Training</v-btn>
           <draggable v-model="workout.trainings" @start="onDragStart" @end="onDragEnd">
             <div v-for="(training, tIndex) in workout.trainings" :key="tIndex">
               <v-card variant="outlined" class="mb-3">
-                <v-card-title>
-                  Training {{ tIndex + 1 }}
-                  <v-btn class="ml-2" density="compact" variant="flat" size="medium" @click="removeTraining(tIndex)">
-                    <v-icon color="red">mdi-delete</v-icon>
+                <v-card-title class="mb-3 mt-3">
+                  <v-btn append-icon="mdi-delete" variant="flat" size="medium" @click="removeTraining(tIndex)">
+                    Training {{ tIndex + 1 }}
                   </v-btn>
                 </v-card-title>
                 <v-card-text>
-                  <v-btn variant="outlined" class="mb-2" @click="addExercise(training)">Add Exercise</v-btn>
+                  <v-btn prepend-icon="mdi-plus-box" variant="outlined" class="mb-2" @click="addExercise(training)">Add
+                    Exercise</v-btn>
                   <draggable v-model="training.exercises" @start="onDragStart" @end="onDragEnd">
                     <div v-for="(exercise, exIndex) in training.exercises" :key="exIndex">
                       <v-card variant="outlined" class="mt-2">
-                        <v-card-title class="mb-4">
-                          Exercise {{ exIndex + 1 }}
-                          <v-btn class="ml-2" density="compact" variant="flat" size="medium"
-                            @click="removeExercise(training, exIndex)">
-                            <v-icon color="red">mdi-delete</v-icon>
+                        <v-card-title class="mb-3 mt-3">
+                          <v-btn append-icon="mdi-delete" variant="flat" size="medium" @click="removeExercise(training, exIndex)">
+                            Exercise {{ exIndex + 1 }}
                           </v-btn>
                         </v-card-title>
                         <v-card-text>
@@ -50,7 +48,7 @@
                             </v-chip>
                           </div>
                           <div v-else class="mb-8">
-                            <v-btn variant="outlined" @click="openDialog(exIndex)">Choose
+                            <v-btn prepend-icon="mdi-magnify" variant="outlined" @click="openDialog(exIndex)">Choose
                               Exercise </v-btn>
                             <v-dialog v-model="dialog" max-width="500px">
                               <v-card>
