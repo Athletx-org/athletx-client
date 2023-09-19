@@ -10,20 +10,26 @@
     >Create new workout
     </v-btn>
   </v-row>
-  <v-row class="ml-2">
-    <v-col class="mt-5" cols="12" sm="3" md="4" v-for="workout in this.workouts" :key="workout._id">
+  <v-row class="ml-2" justify="start">
+    <v-col class="mt-5" cols="12" sm="3" md="4" v-for="(workout,i) in this.workouts" :key="workout._id">
       <v-hover v-slot:default="{ isHovering, props }">
         <v-card
             :to="this.$route.path+'/'+workout._id"
             v-bind="props"
-            :variant="isHovering ? 'elevated' : 'flat'"
+            :variant="isHovering ? 'flat' : 'elevated'"
             :elevation="isHovering ? 10: 4"
             :width="isHovering ? 350 : 350"
             :class="isHovering ? 'up' : undefined"
             rounded="lg"
         >
-          <v-card-title> {{ workout.name }}</v-card-title>
-          <v-card-text>
+          <v-img
+              height="80"
+              :src="colors[i % colors.length]"
+              cover
+              class="text-white"
+          />
+          <v-card-title class="text-center"> {{ workout.name }}</v-card-title>
+          <v-card-text class="text-center">
             {{ workout.description }}
           </v-card-text>
           <v-card-text>
@@ -61,6 +67,13 @@ export default {
       title: "Workouts",
       userId: this.$store.state.auth.user._id,
       workouts: [],
+      colors: [
+        "https://singlecolorimage.com/get/33fd8f/400x100",
+        "https://singlecolorimage.com/get/11b7bf/400x100",
+        "https://singlecolorimage.com/get/e03e22/400x100",
+        "https://singlecolorimage.com/get/f5eb31/400x100"
+
+      ]
     }
   },
   created() {
@@ -78,8 +91,12 @@ export default {
         }
       })
     },
-    editWorkout(workoutId) {
-      this.$router.push("/workouts/" + workoutId)
+    getRandomColor() {
+      console.log("here")
+      const basePath = "https://singlecolorimage.com/get/"
+      const color = Math.floor(Math.random()*16777215).toString(16)
+      console.log(basePath+color)
+      return basePath +color
     },
     async setAsCurrent(workoutId) {
       const selectedWorkout = this.workouts.find(workout => workout._id === workoutId)

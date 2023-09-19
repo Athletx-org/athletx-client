@@ -1,10 +1,47 @@
 <template>
-    <h1>Dashboard</h1>
-  <div v-if="currentWorkout">
-    <h2>Current workout: {{currentWorkout.workoutId.name}}</h2>
-    <p>Starting Date: {{currentWorkout.startingDate }}</p>
-    <p>Ending Date: {{currentWorkout.endingDate }}</p>
-  </div>
+  <v-row align="center">
+    <v-col cols="12" md="6">
+      <v-card height="350">
+        <v-card-title>
+          Current Workout
+        </v-card-title>
+      <v-card-text>
+        Content
+      </v-card-text>
+      </v-card>
+    </v-col>
+    <v-col cols="12" md="6">
+      <v-card height="350">
+        <v-card-title>
+          Section 2
+        </v-card-title>
+        <v-card-text>
+          Content
+        </v-card-text>
+      </v-card>
+    </v-col>
+    <v-col cols="12" md="6">
+      <v-card height="350">
+        <v-card-title>
+          Section 3
+        </v-card-title>
+        <v-card-text>
+          Content
+        </v-card-text>
+      </v-card>
+    </v-col>
+    <v-col cols="12" md="6">
+      <v-card height="350">
+        <v-card-title>
+          Section 4
+        </v-card-title>
+        <v-card-text>
+          Content
+        </v-card-text>
+      </v-card>
+    </v-col>
+
+  </v-row>
 </template>
 
 <script>
