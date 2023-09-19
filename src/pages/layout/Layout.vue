@@ -6,17 +6,21 @@
       <router-view />
     </v-container>
   </v-main>
+  <MyFooter/>
 </template>
 
 <script>
 import NavigationDrawer from "@/components/navigationDrawer/NavigationDrawer";
 import DashboardAppBar from "@/components/dashboardAppBar/DashboardAppBar.vue";
+import MyFooter from "@/components/footer/Footer"
+
 import { mapGetters } from "vuex";
 export default {
   name: "Layout",
   components: {
     NavigationDrawer,
     DashboardAppBar,
+    MyFooter
   },
   data() {
     return {
