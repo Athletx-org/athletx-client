@@ -45,7 +45,6 @@
                       :src="feature.img"
                       max-width="80px"
                       class="d-block ml-auto mr-auto mt-5"
-                      :class="{ 'zoom-efect': hover }"
                   ></v-img>
                   <v-card-title><h4>{{ feature.title }}</h4></v-card-title>
                   <v-card-text>
