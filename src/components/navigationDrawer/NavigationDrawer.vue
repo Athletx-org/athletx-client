@@ -3,14 +3,20 @@
             app
             v-model="isDrawerVisible"
             permanent
-            color="paletteBlack"
+            color="paletteBlue"
         >
           <v-list density="compact" nav>
-            <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" value="dashboard" to="/dashboard"></v-list-item>
-            <v-list-item prepend-icon="mdi-folder" title="Workouts" value="workouts" to="/workouts"></v-list-item>
-            <v-list-item prepend-icon="mdi-account" title="Profile" value="profile" to="/profile"></v-list-item>
-            <v-list-item prepend-icon="mdi-trending-up" title="Analytics" value="analytics" to="/analytics"></v-list-item>
-            <v-list-item prepend-icon="mdi-trending-up" title="Goal" value="goals" to="/goals"></v-list-item>
+            <v-list-item
+                v-for="item in drawerItems"
+                :key="item.title"
+                :prepend-icon="item.icon"
+                :title="item.title"
+                :value="item.value"
+                :to="item.link"
+                class="drawerItem"
+                active-class="drawerItem-active"
+            >
+            </v-list-item>
           </v-list>
         </v-navigation-drawer>
 </template>
@@ -21,6 +27,40 @@ export default {
   name: "NavigationDrawer",
   data() {
     return {
+      rail: false,
+      drawerItems: [
+        {
+          icon: "mdi-view-dashboard",
+          title:"Dashboard",
+          value:"dashboard",
+          link:"/dashboard"
+        },
+        {
+          icon: "mdi-folder",
+          title:"Workouts",
+          value:"workouts",
+          link:"/workouts"
+        },
+        {
+          icon: "mdi-account",
+          title:"Profile",
+          value:"profile",
+          link:"/profile"
+        },
+        {
+          icon: "mdi-trending-up",
+          title:"Analytics",
+          value:"analytics",
+          link:"/analytics"
+        },
+        {
+          icon: "mdi-check-circle-outline",
+          title:"Goals",
+          value:"goals",
+          link:"/goals"
+        },
+
+      ]
     };
   },
   created() {

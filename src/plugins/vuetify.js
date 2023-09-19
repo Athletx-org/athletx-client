@@ -17,7 +17,6 @@ export default createVuetify({
                 variables: {},
                 colors: {
                     background: '#fff',
-                    surface: '#fff',
                     primary: '#000',
                     paletteBlue: '#4D6DE3',
                     paletteLightBlue: '#C7EEFF',

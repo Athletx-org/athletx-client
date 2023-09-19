@@ -1,33 +1,55 @@
 <template>
-  <h1> {{ title }}</h1>
-  <div v-if="currentWorkout">
-    <h2>Current workout: {{currentWorkout.workoutId.name}}</h2>
-    <p>Starting Date: {{currentWorkout.startingDate }}</p>
-    <p>Ending Date: {{currentWorkout.endingDate }}</p>
-  </div>
-  <v-btn to="/workouts/new" color="success" >Add new workout</v-btn>
-    <v-row>
-      <v-col class="mt-5" cols="12" sm="3" md="4" v-for="workout in this.workouts" :key="workout._id">
-        <v-card :to="this.$route.path+'/'+workout._id" width="350" elevation="5" outlined>
+  <v-row class="ml-5">
+    <v-btn
+        to="/workouts/new"
+        color="paletteBlue"
+        prepend-icon="mdi-plus-box"
+        variant="outlined"
+        elevation="6"
+        class="mt-5"
+    >Create new workout
+    </v-btn>
+  </v-row>
+  <v-row class="ml-2">
+    <v-col class="mt-5" cols="12" sm="3" md="4" v-for="workout in this.workouts" :key="workout._id">
+      <v-hover v-slot:default="{ isHovering, props }">
+        <v-card
+            :to="this.$route.path+'/'+workout._id"
+            v-bind="props"
+            :variant="isHovering ? 'elevated' : 'flat'"
+            :elevation="isHovering ? 10: 4"
+            :width="isHovering ? 350 : 350"
+            :class="isHovering ? 'up' : undefined"
+            rounded="lg"
+        >
           <v-card-title> {{ workout.name }}</v-card-title>
           <v-card-text>
             {{ workout.description }}
           </v-card-text>
+          <v-card-text>
+            <strong>Difficulty:</strong> {{ workout.difficulty }} <br>
+            <strong>Duration:</strong> {{ workout.duration }} days
+          </v-card-text>
           <v-card-actions>
-            <v-btn size="small" color="secondary" variant="elevated" v-on:click.prevent @click="setAsCurrent(workout._id)">
+            <v-btn
+                size="small"
+                color="paletteBlue"
+                variant="elevated"
+                elevation="8"
+                v-on:click.prevent
+                @click="setAsCurrent(workout._id)"
+            >
               START NOW
             </v-btn>
             <v-spacer></v-spacer>
-            <v-btn v-on:click.prevent @click="editWorkout(workout._id)">
-              <v-icon size="small">mdi-pencil</v-icon>
-            </v-btn>
             <v-btn v-on:click.prevent @click="deleteWorkout(workout._id)">
-              <v-icon size="small">mdi-delete</v-icon>
+              <v-icon size="large">mdi-delete</v-icon>
             </v-btn>
           </v-card-actions>
         </v-card>
-      </v-col>
-    </v-row>
+      </v-hover>
+    </v-col>
+  </v-row>
 </template>
 <script>
 import WorkoutService from "@/services/workout.service";
@@ -39,19 +61,14 @@ export default {
       title: "Workouts",
       userId: this.$store.state.auth.user._id,
       workouts: [],
-      currentWorkout: null
     }
   },
   created() {
     this.fetchWorkouts()
-    this.fetchCurrentWorkout()
   },
   methods: {
     async fetchWorkouts() {
       this.workouts = await WorkoutService.getWorkouts(this.userId)
-    },
-    async fetchCurrentWorkout() {
-      this.currentWorkout = await WorkoutService.getCurrentWorkout(this.userId)
     },
     async deleteWorkout(workoutId) {
       WorkoutService.deleteWorkout(this.userId, workoutId).then(() => {
@@ -61,29 +78,14 @@ export default {
         }
       })
     },
-    editWorkout(workoutId){
-      this.$router.push("/workouts/"+workoutId)
+    editWorkout(workoutId) {
+      this.$router.push("/workouts/" + workoutId)
     },
     async setAsCurrent(workoutId) {
       const selectedWorkout = this.workouts.find(workout => workout._id === workoutId)
       const startingDate = new Date()
       let endingDate = new Date()
       endingDate.setDate(startingDate.getDate() + selectedWorkout.duration)
-      if(this.currentWorkout != null) {
-        this.currentWorkout.workoutId.name = selectedWorkout.name
-        this.currentWorkout.startingDate =  startingDate.toLocaleDateString()
-        this.currentWorkout.endingDate = endingDate.toLocaleDateString()
-      } else {
-        this.currentWorkout = {
-          startingDate: startingDate.toLocaleDateString(),
-          endingDate: endingDate.toLocaleDateString(),
-          workoutId: {
-            _id: workoutId,
-            name: selectedWorkout.name
-          }
-        }
-      }
-
       const activeWorkout = {
         userId: this.userId,
         workoutId: workoutId,
