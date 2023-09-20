@@ -16,7 +16,7 @@
             </v-btn>
           </div>
           <div class="mb-7">
-            <div class="font-weight-bold">Duration (min)</div>
+            <div class="font-weight-bold">Duration (days)</div>
             <VueScrollPicker :options="durationArray" v-model="workout.duration" />
           </div>
           <v-btn prepend-icon="mdi-plus-box" @click="addTraining" variant="outlined" class="mb-4">New Training</v-btn>
@@ -35,15 +35,15 @@
                     <div v-for="(exercise, exIndex) in training.exercises" :key="exIndex">
                       <v-card variant="outlined" class="mt-2">
                         <v-card-title class="mb-3 mt-3">
-                          <v-btn append-icon="mdi-delete" variant="flat" size="medium" @click="removeExercise(training, exIndex)">
+                          <v-btn append-icon="mdi-delete" variant="flat" size="medium"
+                            @click="removeExercise(training, exIndex)">
                             Exercise {{ exIndex + 1 }}
                           </v-btn>
                         </v-card-title>
                         <v-card-text>
                           <div v-if="training.exercises[exIndex].exerciseId" class="mb-8">
                             <v-chip size="large" label v-if="default_exercises" closable
-                              @click:close="deleteSelectedExercise(training, exIndex)" text-color="white"
-                              close-icon="mdi-delete">
+                              @click:close="deleteSelectedExercise(training, exIndex)" text-color="white">
                               {{ getDefaultExerciseName(training, exIndex) }}
                             </v-chip>
                           </div>
@@ -121,7 +121,7 @@ export default {
 
   data() {
     return {
-      durationArray: Array.from({ length: 30 }, (_, index) => index * 10 + 10),
+      durationArray: Array.from({ length: 30 }, (_, index) => index + 1),
       selections: 1,
       difficultyButtons: ["easy", "medium", "hard"],
       isDragging: false,
