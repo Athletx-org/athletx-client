@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
+import Analytics from "@/pages/analytics/Analytics";
 import Authentication from "@/pages/authentication/Authentication";
 import HomePage from "@/pages/home/HomePage.vue";
 import PageNotFound from "@/pages/notFound/PageNotFound.vue";
@@ -46,6 +47,11 @@ const routes = [
       path: '/goals',
       name: 'Goals',
       component: Goal
+    },
+    {
+      path: '/analytics',
+      name: 'Analytics',
+      component: Analytics
     },
     ]
   },
