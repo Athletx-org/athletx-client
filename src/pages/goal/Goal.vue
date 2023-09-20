@@ -1,49 +1,102 @@
 <template>
-    <div>
-        <v-text-field v-model="newGoal.text" label="Inserisci un nuovo goal" outlined>
-        </v-text-field>
-        <VueDatePicker v-model="newGoal.expiration" :min-date="new Date()" :enable-time-picker="false"></VueDatePicker>
-        <v-btn class="mt-5 mb-5" @click="addGoal">Add Goal</v-btn>
-    </div>
-    <div>
-        <v-card>
-            <v-card-title>
-                Active Goals
-            </v-card-title>
-            <v-list>
-                <v-list-item v-for="(goal, index) in activeGoals" :key="index">
-                    <v-checkbox v-model="goal.achieved" :label="goal.text"
-                        @change="handleCheckboxChange(goal)"></v-checkbox>
-                </v-list-item>
-            </v-list>
-        </v-card>
+    <v-container>
+        <v-row justify="center">
+            <v-col cols="12" xs="12" md="10" l="6" xl="6">
+                <div>
+                    <v-text-field variant="outlined" v-model="newGoal.text" label="Insert New Goal" outlined>
+                    </v-text-field>
+                    <VueDatePicker v-model="newGoal.expiration" :min-date="new Date().setDate(new Date().getDate() + 1)"
+                        placeholder="Select Expiration Date" :enable-time-picker="false"></VueDatePicker>
+                    <v-btn class="mt-5 mb-8" color="paletteLightBlue" @click="addGoal">Save Goal</v-btn>
+                </div>
+                <h2>
+                    Active Goals
+                </h2>
+                <!-- <v-row>
+                    <v-col cols="12" xs="12" sm="12" md="12" l="4" xl="4">
+                        <div class="grid-container">
+                            <v-card v-for="(goal, index) in activeGoals" :key="index">
+                                <v-card-title style="white-space: normal; overflow-wrap: break-word;">
+                                    {{ goal.text }}
+                                </v-card-title>
+                                <v-card-text>
+                                    <v-row align="center" justify="center">
+                                        <v-col cols="4" class="text-subtitle-1 font-weight-bold">
+                                            Expiration:
+                                        </v-col>
+                                        <v-col>
+                                            <VueDatePicker v-model="goal.expiration"
+                                                :min-date="new Date().setDate(new Date().getDate() + 1)"
+                                                :enable-time-picker="false"></VueDatePicker>
+                                        </v-col>
+                                    </v-row>
+                                    <v-chip class="mt-5" color="teal" text-color="white"
+                                        prepend-icon="mdi-checkbox-marked-circle" @click=setGoalAsAchieved(goal)
+                                        :model-value="true">
+                                        Done
+                                    </v-chip>
+                                </v-card-text>
+                            </v-card>
+                        </div>
 
-        <v-card>
-            <v-card-title>
-                Achieved Goals
-            </v-card-title>
-            <v-list>
-                <v-list-item v-for="(goal, index) in completedGoals" :key="index">
-                    <div>
-                        {{ goal.text }}
+                    </v-col>
+                </v-row> -->
+                    <div class="items">
+                        <v-card class="item" v-for="(goal, index) in activeGoals" :key="index">
+                            <v-card-title style="white-space: normal; overflow-wrap: break-word;">
+                                {{ goal.text }}
+                            </v-card-title>
+                            <v-card-text>
+                                <v-row align="center" justify="center">
+                                    <v-col cols="5" class="text-subtitle-1 font-weight-bold">
+                                        Expiration:
+                                    </v-col>
+                                    <v-col>
+                                        <VueDatePicker v-model="goal.expiration"
+                                            :min-date="new Date().setDate(new Date().getDate() + 1)"
+                                            :enable-time-picker="false"></VueDatePicker>
+                                    </v-col>
+                                </v-row>
+                                <v-chip class="mt-5" color="teal" text-color="white"
+                                    prepend-icon="mdi-checkbox-marked-circle" @click=setGoalAsAchieved(goal)
+                                    :model-value="true">
+                                    Done
+                                </v-chip>
+                            </v-card-text>
+                        </v-card>
                     </div>
-                </v-list-item>
-            </v-list>
-        </v-card>
+            </v-col>
 
-        <v-card>
-            <v-card-title>
-                Not Achieved Goals
-            </v-card-title>
-            <v-list>
-                <v-list-item v-for="(goal, index) in notAchievedGoals" :key="index">
-                    <div>
-                        {{ goal.text }}
-                    </div>
-                </v-list-item>
-            </v-list>
-        </v-card>
-    </div>
+            <v-col cols="12" xs="12" md="10" l="6" xl="6">
+
+                <v-card class="mb-8">
+                    <v-card-title>
+                        Achieved Goals
+                    </v-card-title>
+                    <v-list>
+                        <v-list-item v-for="(goal, index) in completedGoals" :key="index">
+                            <div>
+                                {{ goal.text }}
+                            </div>
+                        </v-list-item>
+                    </v-list>
+                </v-card>
+
+                <v-card>
+                    <v-card-title>
+                        Not Achieved Goals
+                    </v-card-title>
+                    <v-list>
+                        <v-list-item v-for="(goal, index) in notAchievedGoals" :key="index">
+                            <div>
+                                {{ goal.text }}
+                            </div>
+                        </v-list-item>
+                    </v-list>
+                </v-card>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
   
 <script>
@@ -57,7 +110,9 @@ import { computed } from 'vue';
 
 
 export default {
-    components: { VueDatePicker },
+    components: {
+        VueDatePicker,
+    },
     data() {
         return {
             goals: reactive([]),
@@ -65,7 +120,7 @@ export default {
                 return this.goals.filter((goal) => goal.achieved)
             }),
             activeGoals: computed(() => {
-                return this.goals.filter((goal) => !goal.achieved && goal.expiration >= new Date().toISOString())
+                return this.goals.filter((goal) => !goal.achieved && goal.expiration > new Date().toISOString())
             }),
             notAchievedGoals: computed(() => {
                 return this.goals.filter((goal) => goal.expiration < new Date().toISOString())
@@ -94,11 +149,16 @@ export default {
         async saveGoal() {
             await GoalService.createNewGoal(this.$store.state.auth.user._id, this.newGoal)
         },
-        async handleCheckboxChange(goal) {
+        async setGoalAsAchieved(goal) {
             await GoalService.setGoalAsAchieved(this.$store.state.auth.user._id, goal._id)
+            await this.getAllGoals()
         },
         async getAllGoals() {
             this.goals = await GoalService.getAllGoals(this.$store.state.auth.user._id)
+        },
+        getShortDate(fullDate) {
+            const date = new Date(fullDate)
+            return date.getDay() + "-" + date.getMonth() + "-" + date.getFullYear()
         }
     },
     async created() {
@@ -107,4 +167,4 @@ export default {
     }
 };
 </script>
-  
+<style src="./Goal.scss" lang="scss" scoped/>
