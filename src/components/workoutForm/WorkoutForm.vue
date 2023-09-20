@@ -95,7 +95,7 @@
             </div>
           </draggable>
           <div class="text-center">
-            <v-btn color="paletteBlue" size="large" variant="flat" class="mt-5" @click="sendWorkout()">Send
+            <v-btn color="paletteLightBlue" size="large" variant="flat" class="mt-5" @click="sendWorkout()">Send
               Workout</v-btn>
           </div>
         </div>
