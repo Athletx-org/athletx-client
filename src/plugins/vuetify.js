@@ -18,7 +18,7 @@ export default createVuetify({
                 colors: {
                     background: '#fff',
                     primary: '#000',
-                    paletteBlue: '#4D6DE3',
+                    paletteBlue: '#127cd2',
                     paletteLightBlue: '#C7EEFF',
                     paletteWhite: '#F1FCFD',
                     paletteBlack: '#393737'

@@ -1,7 +1,7 @@
 <template>
   <DashboardAppBar />
   <v-main class="fill-height">
-    <NavigationDrawer :width="isMobile ? width : auto" />
+    <NavigationDrawer :width="isMobile ? width : 250" />
     <v-container fluid v-show="!(isMobile && isDrawerVisible)">
       <router-view />
     </v-container>
