@@ -3,19 +3,23 @@
             app
             v-model="isDrawerVisible"
             permanent
-            color="paletteBlue"
+            color="blue-darken-1"
         >
           <v-list density="compact" nav>
             <v-list-item
                 v-for="item in drawerItems"
                 :key="item.title"
-                :prepend-icon="item.icon"
-                :title="item.title"
                 :value="item.value"
                 :to="item.link"
                 class="drawerItem"
                 active-class="drawerItem-active"
             >
+              <template v-slot:prepend>
+                <v-icon :icon="item.icon" class="drawerIcon" size="small"></v-icon>
+              </template>
+              <v-list-item-content>
+                <v-list-item-title> {{item.title }}</v-list-item-title>
+              </v-list-item-content>
             </v-list-item>
           </v-list>
         </v-navigation-drawer>
