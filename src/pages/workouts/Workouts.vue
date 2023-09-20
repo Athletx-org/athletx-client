@@ -1,30 +1,40 @@
 <template>
-  <v-row class="ml-5">
-    <v-btn
-        to="/workouts/new"
-        color="paletteBlue"
-        prepend-icon="mdi-plus-box"
-        variant="outlined"
-        elevation="6"
-        class="mt-5"
-    >Create new workout
-    </v-btn>
+  <v-row class="ml-5" justify="space-between" no-gutters="">
+    <v-col>
+      <v-btn
+          to="/workouts/new"
+          color="paletteBlue"
+          prepend-icon="mdi-plus-box"
+          variant="outlined"
+          elevation="10"
+          class="mt-5"
+      >Create new workout
+      </v-btn>
+    </v-col>
+    <v-col md="4" class="mt-3">
+      <v-timeline direction="horizontal" density="compact" line-thickness="2" line-color="black">
+        <v-timeline-item dot-color="green" size="small" elevation="6" fill-dot="true"><strong>Easy</strong></v-timeline-item>
+        <v-timeline-item dot-color="yellow" size="small" elevation="6" fill-dot="true"><strong>Medium</strong></v-timeline-item>
+        <v-timeline-item dot-color="red" size="small" elevation="6" fill-dot="true"><strong>Hard</strong></v-timeline-item>
+      </v-timeline>
+    </v-col>
   </v-row>
-  <v-row class="ml-2" justify="start">
-    <v-col class="mt-5" cols="12" sm="3" md="4" v-for="(workout,i) in this.workouts" :key="workout._id">
+  <v-row class="ml-2 mt-2" justify="start" no-gutters>
+    <v-col class="mt-3" cols="12" sm="3" md="3" v-for="workout in this.workouts" :key="workout._id">
       <v-hover v-slot:default="{ isHovering, props }">
         <v-card
             :to="this.$route.path+'/'+workout._id"
             v-bind="props"
             :variant="isHovering ? 'flat' : 'elevated'"
             :elevation="isHovering ? 10: 4"
-            :width="isHovering ? 350 : 350"
-            :class="isHovering ? 'up' : undefined"
+            :width="isHovering ? 300 : 300"
+            :height="300"
+            :class="isHovering ? undefined : undefined"
             rounded="lg"
         >
           <v-img
               height="80"
-              :src="colors[i % colors.length]"
+              :src="workout.difficulty === 0 ? colors.easy : workout.difficulty === 1 ? colors.medium : colors.hard"
               cover
               class="text-white"
           />
@@ -33,23 +43,40 @@
             {{ workout.description }}
           </v-card-text>
           <v-card-text>
-            <strong>Difficulty:</strong> {{ workout.difficulty }} <br>
+            <strong>Trainings: </strong> {{ workout.trainings.length }} <br>
             <strong>Duration:</strong> {{ workout.duration }} days
           </v-card-text>
           <v-card-actions>
             <v-btn
                 size="small"
-                color="paletteBlue"
-                variant="elevated"
+                color="black"
+                variant="flat"
+                class="bg-white"
                 elevation="8"
                 v-on:click.prevent
                 @click="setAsCurrent(workout._id)"
             >
-              START NOW
+              <strong>START NOW</strong>
             </v-btn>
             <v-spacer></v-spacer>
-            <v-btn v-on:click.prevent @click="deleteWorkout(workout._id)">
-              <v-icon size="large">mdi-delete</v-icon>
+            <v-btn v-on:click.prevent variant="elevated" elevation="6" class="mx-auto" size="small" @click="shareWorkout(workout._id)">
+              <v-icon color="black" size="x-large">mdi-share-variant</v-icon>
+            </v-btn>
+            <v-btn v-on:click.prevent variant="elevated" elevation="6" size="small">
+              <v-icon  color="red" size="x-large">mdi-delete</v-icon>
+              <v-dialog v-model="dialog" activator="parent" transition="dialog-top-transition" width="auto">
+                <v-card>
+                  <v-card-text class="text-center">Are you sure you want to delete workout "<strong>{{ workout.name }}</strong>"?</v-card-text>
+                  <v-card-actions>
+                    <v-row class="text-center" align-content="center" justify="space-around">
+                      <v-col cols="12" class="text-center">
+                        <v-btn color="blue-darken-1" variant="elevated" elevation="6" @click="deleteWorkout(workout._id)">Yes</v-btn>
+                        <v-btn color="red" variant="elevated" elevation="6" @click="this.dialog = false">No</v-btn>
+                      </v-col>
+                    </v-row>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -67,13 +94,12 @@ export default {
       title: "Workouts",
       userId: this.$store.state.auth.user._id,
       workouts: [],
-      colors: [
-        "https://singlecolorimage.com/get/33fd8f/400x100",
-        "https://singlecolorimage.com/get/11b7bf/400x100",
-        "https://singlecolorimage.com/get/e03e22/400x100",
-        "https://singlecolorimage.com/get/f5eb31/400x100"
-
-      ]
+      colors: {
+        easy: 'https://singlecolorimage.com/get/32a852/400x100',
+        medium: 'https://singlecolorimage.com/get/fcfa49/400x100',
+        hard: 'https://singlecolorimage.com/get/cc0000/400x100',
+      },
+      dialog: false
     }
   },
   created() {
@@ -86,17 +112,8 @@ export default {
     async deleteWorkout(workoutId) {
       WorkoutService.deleteWorkout(this.userId, workoutId).then(() => {
         this.workouts = this.workouts.filter(workout => workout._id !== workoutId)
-        if (this.currentWorkout.workoutId._id === workoutId) {
-          this.currentWorkout = null
-        }
+        this.dialog = false
       })
-    },
-    getRandomColor() {
-      console.log("here")
-      const basePath = "https://singlecolorimage.com/get/"
-      const color = Math.floor(Math.random()*16777215).toString(16)
-      console.log(basePath+color)
-      return basePath +color
     },
     async setAsCurrent(workoutId) {
       const selectedWorkout = this.workouts.find(workout => workout._id === workoutId)
@@ -110,6 +127,9 @@ export default {
         endingDate: endingDate
       }
       return await WorkoutService.setCurrentWorkout(this.userId, activeWorkout)
+    },
+    shareWorkout(workoutId) {
+      console.log(workoutId)
     }
   }
 }
