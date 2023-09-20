@@ -53,7 +53,7 @@
                     </div>
                   </v-col>
                   <v-col cols="12" md="6">
-                    <v-card-text class="mt-12">
+                    <v-card-text class="mt-5">
                       <Signup/>
                     </v-card-text>
                   </v-col>
