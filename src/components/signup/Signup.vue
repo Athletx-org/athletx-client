@@ -1,16 +1,19 @@
 <template>
   <h2 class="text-center text-decoration-underline">Sign Up for an Account</h2>
-  <v-row align="center" justify="center">
+  <v-row align="center" justify="center" class="text-center" no-gutters>
     <v-col cols="12" sm="6">
       <v-form fast-fail @submit.prevent="handleSignup">
         <v-row>
           <v-col cols="12">
             <v-text-field
                 label="Email"
-                color="blue"
+                color="cyan"
+                variant="outlined"
                 class="mt-6"
                 v-model="user.email"
+                prepend-icon="mdi-email"
                 required
+                autocomplete="false"
             />
           </v-col>
         </v-row>
@@ -20,7 +23,9 @@
                 label="Password"
                 :type="showPassword ? 'text' : 'password'"
                 @click:append="showPassword = !showPassword"
-                color="blue"
+                color="cyan"
+                variant="outlined"
+                prepend-icon="mdi-key-variant"
                 v-model="user.password"
                 :rules="passwordRule"
                 :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -33,7 +38,9 @@
             <v-text-field
                 label="Confirm Password"
                 :type="showConfirmPassword ? 'text' : 'password'"
-                color="blue"
+                color="cyan"
+                variant="outlined"
+                prepend-icon="mdi-key-variant"
                 @click:append="showConfirmPassword = !showConfirmPassword"
                 v-model="user.confirmPassword"
                 :rules="confirmPasswordRule"
@@ -41,8 +48,13 @@
                 required
             />
           </v-col>
+          <v-row no-gutters>
+            <v-col cols="12">
+            <v-checkbox color="success" label="I agree to site terms and conditions" />
+            </v-col>
+          </v-row>
         </v-row>
-        <v-btn type="submit" color="blue" elevation="6" class="mt-5" tile>Sign up</v-btn>
+          <v-btn type="submit" color="blue" elevation="6" class="mt-5" tile>Sign up</v-btn>
       </v-form>
     </v-col>
   </v-row>
@@ -66,7 +78,7 @@ export default {
       confirmPasswordRule: [
         value => {
           if (value === this.user.password) return true
-          return 'Password must match previous password.'
+          return 'Passwords must match.'
         },
       ],
       showPassword: false,
