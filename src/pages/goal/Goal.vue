@@ -12,37 +12,9 @@
                 <h2>
                     Active Goals
                 </h2>
-                <!-- <v-row>
-                    <v-col cols="12" xs="12" sm="12" md="12" l="4" xl="4">
-                        <div class="grid-container">
-                            <v-card v-for="(goal, index) in activeGoals" :key="index">
-                                <v-card-title style="white-space: normal; overflow-wrap: break-word;">
-                                    {{ goal.text }}
-                                </v-card-title>
-                                <v-card-text>
-                                    <v-row align="center" justify="center">
-                                        <v-col cols="4" class="text-subtitle-1 font-weight-bold">
-                                            Expiration:
-                                        </v-col>
-                                        <v-col>
-                                            <VueDatePicker v-model="goal.expiration"
-                                                :min-date="new Date().setDate(new Date().getDate() + 1)"
-                                                :enable-time-picker="false"></VueDatePicker>
-                                        </v-col>
-                                    </v-row>
-                                    <v-chip class="mt-5" color="teal" text-color="white"
-                                        prepend-icon="mdi-checkbox-marked-circle" @click=setGoalAsAchieved(goal)
-                                        :model-value="true">
-                                        Done
-                                    </v-chip>
-                                </v-card-text>
-                            </v-card>
-                        </div>
-
-                    </v-col>
-                </v-row> -->
+                
                     <div class="items">
-                        <v-card class="item" v-for="(goal, index) in activeGoals" :key="index">
+                        <v-card class="mb-5 item" v-for="(goal, index) in activeGoals" :key="index">
                             <v-card-title style="white-space: normal; overflow-wrap: break-word;">
                                 {{ goal.text }}
                             </v-card-title>
