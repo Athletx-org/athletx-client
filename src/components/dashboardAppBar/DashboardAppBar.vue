@@ -18,8 +18,17 @@
     </v-btn>
     <v-menu activator="#menu-activator">
       <v-list>
+        <v-list-item to="/">
+          <v-icon>mdi-home</v-icon>
+          Home
+        </v-list-item>
+        <v-list-item to="/profile">
+          <v-icon>mdi-account</v-icon>
+          Profile
+        </v-list-item>
+        <v-divider/>
         <v-list-item>
-          <v-btn variant="outlined" >
+          <v-btn prepend-icon="mdi-logout" color="paletteBlue" variant="outlined" >
             Logout
           </v-btn>
           <v-dialog v-model="logoutDialog" activator="parent" transition="dialog-top-transition" width="auto">
