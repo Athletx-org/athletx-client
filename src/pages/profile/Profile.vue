@@ -14,7 +14,7 @@
                     label="New profile picture"
                     accept="image/*"
                     v-model="files"
-                    hide-input
+                    variant="outlined"
                     @change="handlePictureChange"
                 ></v-file-input>
               </v-col>
@@ -77,6 +77,15 @@
             </v-row>
             <v-row class="text-center" no-gutters justify="center">
               <v-btn
+                  color="blue-darken-1"
+                  variant="elevated"
+                  elevation="6"
+                  class="my-5"
+                  @click="updateProfile"
+              >
+                <strong>Update</strong>
+              </v-btn>
+              <v-btn
                   color="red"
                   variant="elevated"
                   elevation="6"
@@ -86,23 +95,82 @@
               >
                 <strong>CANCEL</strong>
               </v-btn>
-              <v-btn
-                  color="blue-darken-1"
-                  variant="elevated"
-                  elevation="6"
-                  class="my-5"
-                  @click="updateProfile"
-              >
-                <strong>Update</strong>
-              </v-btn>
             </v-row>
           </v-container>
         </v-form>
       </v-card>
     </v-col>
     <v-col cols="12" md="6">
-      <v-card variant="flat" elevation="10">
-        <v-card-title class="text-left"><h3><i>My improvements</i></h3></v-card-title>
+      <v-card variant="flat" elevation="10" max-height="700">
+        <v-card-title class="text-left">
+          <h3><i>My improvements</i></h3>
+        </v-card-title>
+        <v-card-text class="scroll">
+          <v-row class="text-center" justify="center">
+            <v-timeline density="default" align="start" side="end" class="scroll">
+              <v-timeline-item
+                  fill-dot
+                  :dot-color="displayAddNewImprovement ? 'red' : 'yellow'"
+                  size="small"
+                  :icon="displayAddNewImprovement ? 'mdi-minus' : 'mdi-plus'"
+              >
+                <v-btn v-if="!displayAddNewImprovement" @click="displayAddNewImprovement = true"> Add new</v-btn>
+                <v-card v-if="this.displayAddNewImprovement" variant="plain">
+                  <v-card-text>
+                    <v-date-picker
+                        hide-actions
+                        hide-weekdays
+                        input-mode="keyboard"
+                        variant="outlined"
+                        v-model="newImprovement.date"
+                    />
+                    <v-text-field
+                        type="number"
+                        variant="outlined"
+                        label="Kg"
+                        class="pt-2"
+                        v-model="newImprovement.weight"
+                    />
+                    <v-btn
+                        variant="elevated"
+                        size="small"
+                        color="paletteBlue"
+                        elevation="6"
+                        v-on:click.prevent
+                        @click="addNewImprovement"
+                    > Add
+                    </v-btn>
+                    <v-btn
+                        variant="flat"
+                        size="small"
+                        class="ml-1"
+                        color="red"
+                        elevation="6"
+                        v-on:click.prevent
+                        @click="this.displayAddNewImprovement=false"> Cancel
+                    </v-btn>
+
+                  </v-card-text>
+                </v-card>
+
+              </v-timeline-item>
+              <v-timeline-item
+                  v-for="(improvement,i) in improvements"
+                  :key="i"
+                  size="small"
+                  dot-color="paletteBlue"
+                  fill-dot
+              >
+                <template v-slot:opposite>
+                  <h4>
+                    {{ improvement.date.toLocaleDateString() }}
+                  </h4>
+                </template>
+                <h4> {{ improvement.weight }} Kg </h4>
+              </v-timeline-item>
+            </v-timeline>
+          </v-row>
+        </v-card-text>
       </v-card>
     </v-col>
   </v-row>
@@ -110,8 +178,12 @@
 
 <script>
 import UserService from "@/services/user.service";
+import {VDatePicker} from 'vuetify/labs/VDatePicker'
 
 export default {
+  components: {
+    VDatePicker,
+  },
   data() {
     return {
       userId: this.$store.state.auth.user._id,
@@ -127,7 +199,47 @@ export default {
         bio: '',
         profilePic: '',
       },
-      improvements: [],
+      improvements: [
+        {
+          date: new Date(),
+          weight: '100'
+        },
+        {
+          date: new Date(),
+          weight: '100'
+        },
+        {
+          date: new Date(),
+          weight: '100'
+        },
+        {
+          date: new Date(),
+          weight: '100'
+        },        {
+          date: new Date(),
+          weight: '100'
+        },        {
+          date: new Date(),
+          weight: '100'
+        },        {
+          date: new Date(),
+          weight: '100'
+        },
+        {
+          date: new Date(),
+          weight: '100'
+        },
+        {
+          date: new Date(),
+          weight: '100'
+        },
+
+      ],
+      newImprovement: {
+        date: new Date(),
+        weight: ""
+      },
+      displayAddNewImprovement: false,
       files: null,
       inputProfilePic: null,
       profilePicPath: null,
@@ -137,9 +249,6 @@ export default {
     this.fetchUserInfo()
   },
   methods: {
-    toggleEdit() {
-      this.editing = !this.editing;
-    },
     async fetchUserInfo() {
       await UserService.getUserInfo(this.userId).then(
           res => {
@@ -151,7 +260,6 @@ export default {
       )
     },
     async updateProfile() {
-      this.toggleEdit()
       if (this.inputProfilePic !== null) {
         this.user.profilePic = this.inputProfilePic
       }
@@ -160,14 +268,18 @@ export default {
     },
     async cancelEditing() {
       await this.fetchUserInfo()
-      this.editing = false
+      window.location.reload()
     },
     handlePictureChange() {
       if (this.files !== null) {
         this.inputProfilePic = this.files[0]
         this.profilePicPath = URL.createObjectURL(this.inputProfilePic)
       }
-    }
+    },
+    addNewImprovement() {
+      this.improvements.push(structuredClone(this.newImprovement))
+      this.displayAddNewImprovement = false
+    },
   }
 };
 </script>
