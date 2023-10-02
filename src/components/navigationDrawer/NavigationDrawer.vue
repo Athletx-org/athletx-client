@@ -17,9 +17,9 @@
         <template v-slot:prepend>
           <v-icon :icon="item.icon" class="drawerIcon" size="small"></v-icon>
         </template>
-        <v-list-item-content>
+        <v-list-item>
           <v-list-item-title> {{ item.title }}</v-list-item-title>
-        </v-list-item-content>
+        </v-list-item>
       </v-list-item>
     </v-list>
     <template v-slot:append>
