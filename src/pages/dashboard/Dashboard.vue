@@ -1,7 +1,7 @@
 <template>
   <v-row align="center">
     <v-col cols="12" md="6">
-      <v-card height="350" variant="elevated" elevation="10" to="/profile">
+      <v-card height="350" variant="elevated" elevation="10" to="profile">
         <v-card-title class="text-center">
           <h2>{{ user.name }} {{ user.surname }}</h2>
         </v-card-title>
@@ -102,11 +102,21 @@
     </v-col>
     <v-col cols="12" md="6">
       <v-card height="350" variant="elevated" elevation="10">
-        <v-card-title>
-          Goals Stats
+        <v-card-title class="text-center">
+          <h2>Goals Stats</h2>
         </v-card-title>
         <v-card-text>
-          Content
+          <v-row justify="center">
+            <v-col cols="12" md="6">
+
+            </v-col>
+            <v-col cols="12" md="6">
+              <pie-chart
+                  :series="[completedGoals.length, activeGoals.length, notAchievedGoals.length]"
+                  :labels="['Completed', 'Active', 'Not Achieved']"
+              />
+            </v-col>
+          </v-row>
         </v-card-text>
       </v-card>
     </v-col>
@@ -119,9 +129,11 @@ import WorkoutService from "@/services/workout.service";
 import UserService from "@/services/user.service";
 import {computed, reactive} from "vue";
 import GoalService from "@/services/goal.service";
+import PieChart from "@/components/pieChart/PieChart";
 
 export default {
   name: "Dashboard",
+  components: {PieChart},
   data() {
     return {
       currentWorkout: null,
