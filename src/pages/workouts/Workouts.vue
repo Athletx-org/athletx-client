@@ -1,43 +1,30 @@
 <template>
   <v-row class="ml-5" justify="space-between" no-gutters="">
     <v-col>
-      <v-btn
-          to="/workouts/new"
-          color="paletteBlue"
-          prepend-icon="mdi-plus-box"
-          variant="outlined"
-          elevation="10"
-          class="mt-5"
-      >Create new workout
+      <v-btn to="/workouts/new" color="paletteBlue" prepend-icon="mdi-plus-box" variant="outlined" elevation="10"
+        class="mt-5">Create new workout
       </v-btn>
     </v-col>
     <v-col md="4" class="mt-3">
       <v-timeline direction="horizontal" density="compact" line-thickness="2" line-color="black">
-        <v-timeline-item dot-color="green" size="small" elevation="6" fill-dot="true"><strong>Easy</strong></v-timeline-item>
-        <v-timeline-item dot-color="yellow" size="small" elevation="6" fill-dot="true"><strong>Medium</strong></v-timeline-item>
-        <v-timeline-item dot-color="red" size="small" elevation="6" fill-dot="true"><strong>Hard</strong></v-timeline-item>
+        <v-timeline-item dot-color="green" size="small" elevation="6"
+          fill-dot="true"><strong>Easy</strong></v-timeline-item>
+        <v-timeline-item dot-color="yellow" size="small" elevation="6"
+          fill-dot="true"><strong>Medium</strong></v-timeline-item>
+        <v-timeline-item dot-color="red" size="small" elevation="6"
+          fill-dot="true"><strong>Hard</strong></v-timeline-item>
       </v-timeline>
     </v-col>
   </v-row>
   <v-row class="ml-2 mt-2" justify="start" no-gutters>
     <v-col class="mt-3" cols="12" sm="3" md="3" v-for="workout in this.workouts" :key="workout._id">
       <v-hover v-slot:default="{ isHovering, props }">
-        <v-card
-            :to="this.$route.path+'/'+workout._id"
-            v-bind="props"
-            :variant="isHovering ? 'flat' : 'elevated'"
-            :elevation="isHovering ? 10: 4"
-            :width="isHovering ? 300 : 300"
-            :height="300"
-            :class="isHovering ? undefined : undefined"
-            rounded="lg"
-        >
-          <v-img
-              height="80"
-              :src="workout.difficulty === 0 ? colors.easy : workout.difficulty === 1 ? colors.medium : colors.hard"
-              cover
-              class="text-white"
-          />
+        <v-card :to="this.$route.path + '/' + workout._id" v-bind="props" :variant="isHovering ? 'flat' : 'elevated'"
+          :elevation="isHovering ? 10 : 4" :width="isHovering ? 300 : 300" :height="300"
+          :class="isHovering ? undefined : undefined" rounded="lg">
+          <v-img height="80"
+            :src="workout.difficulty === 0 ? colors.easy : workout.difficulty === 1 ? colors.medium : colors.hard" cover
+            class="text-white" />
           <v-card-title class="text-center"> {{ workout.name }}</v-card-title>
           <v-card-text class="text-center">
             {{ workout.description }}
@@ -47,30 +34,31 @@
             <strong>Duration:</strong> {{ workout.duration }} days
           </v-card-text>
           <v-card-actions>
-            <v-btn
-                size="small"
-                color="black"
-                variant="flat"
-                class="bg-white"
-                elevation="8"
-                v-on:click.prevent
-                @click="setAsCurrent(workout._id)"
-            >
+            <v-btn size="small" color="black" variant="flat" class="bg-white" elevation="8" v-on:click.prevent
+              @click="setAsCurrent(workout._id)">
               <strong>START NOW</strong>
             </v-btn>
             <v-spacer></v-spacer>
-            <v-btn v-on:click.prevent variant="elevated" elevation="6" class="mx-auto" size="small" @click="shareWorkout(workout._id)">
+            <v-btn v-on:click.prevent variant="elevated" elevation="6" class="mx-auto" size="small"
+              @click="shareWorkout(workout._id)">
               <v-icon color="black" size="x-large">mdi-share-variant</v-icon>
             </v-btn>
+            <v-btn v-on:click.prevent variant="elevated" elevation="6" class="mx-auto" size="small"
+              @click="exportToPDF(workout._id)">
+              <v-icon color="black" size="x-large">mdi-printer</v-icon>
+              <WorkoutToPrint :id="workout._id" v-show="false" :workoutData="workout"></WorkoutToPrint>
+            </v-btn>
             <v-btn v-on:click.prevent variant="elevated" elevation="6" size="small">
-              <v-icon  color="red" size="x-large">mdi-delete</v-icon>
+              <v-icon color="red" size="x-large">mdi-delete</v-icon>
               <v-dialog v-model="dialog" activator="parent" transition="dialog-top-transition" width="auto">
                 <v-card>
-                  <v-card-text class="text-center">Are you sure you want to delete workout "<strong>{{ workout.name }}</strong>"?</v-card-text>
+                  <v-card-text class="text-center">Are you sure you want to delete workout "<strong>{{ workout.name
+                  }}</strong>"?</v-card-text>
                   <v-card-actions>
                     <v-row class="text-center" align-content="center" justify="space-around">
                       <v-col cols="12" class="text-center">
-                        <v-btn color="blue-darken-1" variant="elevated" elevation="6" @click="deleteWorkout(workout._id)">Yes</v-btn>
+                        <v-btn color="blue-darken-1" variant="elevated" elevation="6"
+                          @click="deleteWorkout(workout._id)">Yes</v-btn>
                         <v-btn color="red" variant="elevated" elevation="6" @click="this.dialog = false">No</v-btn>
                       </v-col>
                     </v-row>
@@ -86,9 +74,14 @@
 </template>
 <script>
 import WorkoutService from "@/services/workout.service";
+import html2pdf from "html2pdf.js";
+import WorkoutToPrint from "../../components/WorkoutToPrint"
 
 export default {
   name: "Workouts",
+  components: {
+    WorkoutToPrint: WorkoutToPrint
+  },
   data() {
     return {
       title: "Workouts",
@@ -130,7 +123,14 @@ export default {
     },
     shareWorkout(workoutId) {
       console.log(workoutId)
-    }
+    },
+    exportToPDF(workoutId) {
+      const toPrint = (document.getElementById(workoutId));
+      var clonedElement = toPrint.cloneNode(true);
+      clonedElement.style.display = "block";
+      html2pdf().from(clonedElement).save();
+      clonedElement.remove();
+    },
   }
 }
 </script>
