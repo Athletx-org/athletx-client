@@ -12,31 +12,28 @@
                 <h2>
                     Active Goals
                 </h2>
-                
-                    <div class="items">
-                        <v-card class="mb-5 item" v-for="(goal, index) in activeGoals" :key="index">
-                            <v-card-title style="white-space: normal; overflow-wrap: break-word;">
-                                {{ goal.text }}
-                            </v-card-title>
-                            <v-card-text>
-                                <v-row align="center" justify="center">
-                                    <v-col cols="5" class="text-subtitle-1 font-weight-bold">
-                                        Expiration:
-                                    </v-col>
-                                    <v-col>
-                                        <VueDatePicker v-model="goal.expiration"
-                                            :min-date="new Date().setDate(new Date().getDate() + 1)"
-                                            :enable-time-picker="false"></VueDatePicker>
-                                    </v-col>
-                                </v-row>
-                                <v-chip class="mt-5" color="teal" text-color="white"
-                                    prepend-icon="mdi-checkbox-marked-circle" @click=setGoalAsAchieved(goal)
-                                    :model-value="true">
-                                    Done
-                                </v-chip>
-                            </v-card-text>
-                        </v-card>
-                    </div>
+
+                <div class="items">
+                    <v-card class="mb-5 item" v-for="(goal, index) in activeGoals" :key="index">
+                        <v-card-title style="white-space: normal; overflow-wrap: break-word;">
+                            {{ goal.text }}
+                        </v-card-title>
+                        <v-card-text>
+                            <v-row align="center" justify="center">
+                                <v-col cols="5" class="text-subtitle-1 font-weight-bold">
+                                    Expiration:
+                                </v-col>
+                                <v-col>
+                                    {{ getShortDate(goal.expiration) }}
+                                </v-col>
+                            </v-row>
+                            <v-chip class="mt-5" color="teal" text-color="white" prepend-icon="mdi-checkbox-marked-circle"
+                                @click=setGoalAsAchieved(goal) :model-value="true">
+                                Done
+                            </v-chip>
+                        </v-card-text>
+                    </v-card>
+                </div>
             </v-col>
 
             <v-col cols="12" xs="12" md="10" l="6" xl="6">
@@ -47,9 +44,12 @@
                     </v-card-title>
                     <v-list>
                         <v-list-item v-for="(goal, index) in completedGoals" :key="index">
-                            <div>
-                                {{ goal.text }}
-                            </div>
+                            <v-card variant="tonal">
+                                <v-card-title>
+                                    {{ goal.text }}
+                                </v-card-title>
+
+                            </v-card>
                         </v-list-item>
                     </v-list>
                 </v-card>
@@ -60,9 +60,14 @@
                     </v-card-title>
                     <v-list>
                         <v-list-item v-for="(goal, index) in notAchievedGoals" :key="index">
-                            <div>
-                                {{ goal.text }}
-                            </div>
+                            <v-card>
+                                <v-card-title>
+                                    {{ goal.text }}
+                                </v-card-title>
+                                <v-card-text>
+                                    Expired in: {{ getShortDate(goal.expiration) }}
+                                </v-card-text>
+                            </v-card>
                         </v-list-item>
                     </v-list>
                 </v-card>
