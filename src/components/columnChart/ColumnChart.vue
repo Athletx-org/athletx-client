@@ -50,11 +50,9 @@ export default {
         }
     },
     methods: {
-      loadWorkoutData() {
-
+      async loadWorkoutData() {
         WorkoutService.getWorkouts(this.$store.state.auth.user._id).then((workouts) => {
           this.series[0].data = [this.countByDifficulty(workouts, 2), this.countByDifficulty(workouts, 1), this.countByDifficulty(workouts, 0)]
-          console.log(this.series.data)        
         })
         
       },

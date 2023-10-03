@@ -27,15 +27,25 @@
           <RadialBar></RadialBar>
         </v-card>
       </v-col>
+      <v-col cols="12" xs="12" md="7" l="3" xl="3">
+        <v-card>
+          <v-card-title>Most performed exercises</v-card-title>
+          <ExerciseChart></ExerciseChart>
+        </v-card>
+      </v-col>
     </v-row>
+
+
 
   </v-container>
 </template>
 <script>
 import RadialBar from "@/components/radialBarChart/RadialBarChart";
-import ColumnChart from "@/components/columnChart/ColumnChart"; 
-import WeightLineChart from "@/components/weightLineChart/WeightLineChart"; 
-import BodyMeasuresLineChart from "@/components/bodyMeasuresLineChart/BodyMeasuresLineChart"; 
+import ColumnChart from "@/components/columnChart/ColumnChart";
+import WeightLineChart from "@/components/weightLineChart/WeightLineChart";
+import BodyMeasuresLineChart from "@/components/bodyMeasuresLineChart/BodyMeasuresLineChart";
+import ExerciseChart from "@/components/exerciseChart/ExerciseChart";
+
 
 
 export default {
@@ -44,7 +54,8 @@ export default {
     RadialBar: RadialBar,
     ColumnChart: ColumnChart,
     WeightLineChart: WeightLineChart,
-    BodyMeasuresLineChart: BodyMeasuresLineChart
+    BodyMeasuresLineChart: BodyMeasuresLineChart,
+    ExerciseChart: ExerciseChart
   },
   data() {
     return {

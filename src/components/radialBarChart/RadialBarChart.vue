@@ -73,11 +73,11 @@ export default {
         }
     },
     methods: {
-      loadWorkoutData() {
+      loadGoalData() {
         GoalService.getAllGoals(this.$store.state.auth.user._id).then((goals) => {          
-            const completedGoals = goals.filter((goal) => goal.achieved).length / goals.length * 100
-            const activeGoals = goals.filter((goal) => !goal.achieved && goal.expiration > new Date().toISOString()).length / goals.length * 100
-            const notAchievedGoals = goals.filter((goal) => goal.expiration < new Date().toISOString()).length / goals.length * 100
+            const completedGoals = Math.round(goals.filter((goal) => goal.achieved).length / goals.length * 100)
+            const activeGoals = Math.round(goals.filter((goal) => !goal.achieved && goal.expiration > new Date().toISOString()).length / goals.length * 100)
+            const notAchievedGoals = Math.round(goals.filter((goal) => goal.expiration < new Date().toISOString()).length / goals.length * 100)
             this.series = [completedGoals, activeGoals, notAchievedGoals]
         })
              
@@ -87,7 +87,7 @@ export default {
       }
     },
     created() {
-      this.loadWorkoutData()
+      this.loadGoalData()
     }
 }
 
