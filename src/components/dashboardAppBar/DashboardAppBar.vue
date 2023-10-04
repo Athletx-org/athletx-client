@@ -11,10 +11,14 @@
     </v-toolbar-title>
     <v-spacer/>
     <v-btn size="large">
-      <v-icon icon="mdi-bell-ring" size="large"/>
+      <v-icon size="large">
+        <v-img :src="require('@/assets/img/icons/notification.png')" />
+      </v-icon>
     </v-btn>
     <v-btn id="menu-activator" size="x-large">
-      <v-icon icon="mdi-account" size="x-large"/>
+      <v-icon  size="x-large">
+        <v-img :src="require('@/assets/img/icons/account.png')" />
+      </v-icon>
     </v-btn>
     <v-menu activator="#menu-activator">
       <v-list>
