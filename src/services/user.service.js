@@ -24,6 +24,13 @@ class UserService{
                 return response.data
             })
     }
+
+    getAllUserImprovements(userId) {
+        return axiosInstance.get("/users/allImprovements/"+userId, {headers: authHeader() })
+            .then(response => {
+                return response.data
+            })
+    }
 }
 
 export default new UserService(); 
