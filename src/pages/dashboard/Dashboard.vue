@@ -161,7 +161,7 @@
           <v-row class="text-center mt-3" justify="space-around">
             <v-col md="1"></v-col>
             <v-col cols="12" md="4">
-              <v-text-field readonly label="Name" v-model="currentWorkout.workoutId.name" variant="underlined" hide-details>
+              <v-text-field readonly label="Name" v-model="currentWorkout.workoutId.name" variant="plain" hide-details>
                 <template v-slot:prepend-inner>
                   <v-icon size="large">
                     <v-img
@@ -170,7 +170,7 @@
                   </v-icon>
                 </template>
               </v-text-field>
-              <v-text-field readonly label="Expiration" v-model="currentWorkout.endingDate" variant="underlined" hide-details>
+              <v-text-field readonly label="Expiration" v-model="currentWorkout.endingDate" variant="plain" hide-details>
                 <template v-slot:prepend-inner>
                   <v-icon size="large">
                     <v-img
@@ -182,7 +182,7 @@
               <v-text-field readonly
                             label="Difficulty"
                             v-model="this.currentWorkout.workoutId.difficulty"
-                            variant="underlined"
+                            variant="plain"
                             hide-details
               >
                 <template v-slot:prepend-inner>
@@ -193,7 +193,7 @@
                   </v-icon>
                 </template>
               </v-text-field>
-              <v-text-field readonly label="Trainings per week" v-model="currentWorkout.workoutId.trainings.length" variant="underlined" hide-details>
+              <v-text-field readonly label="Trainings per week" v-model="currentWorkout.workoutId.trainings.length" variant="plain" hide-details>
                 <template v-slot:prepend-inner>
                   <v-icon size="large">
                     <v-img
@@ -246,7 +246,7 @@
             <v-col cols="12" md="4">
               <v-card variant="flat">
                 <v-card-text>
-                  <v-text-field readonly label="Completed" v-model="completedGoals.length" variant="underlined" hide-details>
+                  <v-text-field readonly label="Completed" v-model="completedGoals.length" variant="plain" hide-details>
                     <template v-slot:prepend-inner>
                       <v-icon size="large">
                         <v-img
@@ -255,7 +255,7 @@
                       </v-icon>
                     </template>
                   </v-text-field>
-                  <v-text-field readonly label="Active goals" v-model="activeGoals.length" variant="underlined" hide-details>
+                  <v-text-field readonly label="Active goals" v-model="activeGoals.length" variant="plain" hide-details>
                     <template v-slot:prepend-inner>
                       <v-icon size="large">
                         <v-img
@@ -264,7 +264,7 @@
                       </v-icon>
                     </template>
                   </v-text-field>
-                  <v-text-field readonly label="Not Achieved goals" v-model="notAchievedGoals.length" variant="underlined" hide-details>
+                  <v-text-field readonly label="Not Achieved goals" v-model="notAchievedGoals.length" variant="plain" hide-details>
                     <template v-slot:prepend-inner>
                       <v-icon size="large">
                         <v-img
@@ -273,7 +273,7 @@
                       </v-icon>
                     </template>
                   </v-text-field>
-                  <v-text-field readonly label="Total goals" v-model="goals.length" variant="underlined" hide-details>
+                  <v-text-field readonly label="Total goals" v-model="goals.length" variant="plain" hide-details>
                     <template v-slot:prepend-inner>
                       <v-icon size="large">
                         <v-img
