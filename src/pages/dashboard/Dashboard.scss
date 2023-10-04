@@ -1,0 +1,29 @@
+.profileImage {
+  border: 1px solid #000;
+  width: 80%;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+.stat-title {
+  font-size: 15px;
+  border-bottom: 1px solid black;
+  font-weight: bold;
+  color: black;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+}
+
+.stat-value {
+  margin-top: 5px;
+  font-size: 26px;
+  color: white;
+}
