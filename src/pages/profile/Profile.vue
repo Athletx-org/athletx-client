@@ -121,7 +121,7 @@
                 </v-text-field>
               </v-col>
               <v-col cols="12" md="5">
-                <v-text-field color="blue-darken-1" variant="outlined" clearable label="Height (Cm)" v-model="user.height">
+                <v-text-field type="number" :min="0" :max="250" color="blue-darken-1" variant="outlined" label="Height (Cm)" v-model="user.height">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
                       <v-img
