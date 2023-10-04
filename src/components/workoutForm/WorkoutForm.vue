@@ -15,10 +15,14 @@
               {{ button }}
             </v-btn>
           </div>
-          <div class="mb-7">
-            <div class="font-weight-bold">Duration (days)</div>
-            <VueScrollPicker :options="durationArray" v-model="workout.duration" />
-          </div>
+          <v-text-field
+                    color="blue-darken-1"
+                    variant="outlined"
+                    type="number"
+                    :min="1"
+                    label="Duration (Days)"
+                    v-model="workout.duration"
+                />
           <v-btn prepend-icon="mdi-plus-box" @click="addTraining" variant="outlined" class="mb-4">New Training</v-btn>
           <draggable v-model="workout.trainings" @start="onDragStart" @end="onDragEnd">
             <div v-for="(training, tIndex) in workout.trainings" :key="tIndex">
@@ -108,12 +112,9 @@
 import { ref } from 'vue';
 import { VueDraggableNext } from 'vue-draggable-next'
 import WorkoutService from "@/services/workout.service";
-import { VueScrollPicker } from 'vue-scroll-picker'
-
 export default {
   components: {
     draggable: VueDraggableNext,
-    VueScrollPicker: VueScrollPicker
   },
   props: {
     workoutData: Object
