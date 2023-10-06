@@ -59,7 +59,6 @@
                                 <v-card-title>Select an exercise</v-card-title>
                                 <v-card-text>
                                   <v-text-field autofocus v-model="searchQuery" label="Search Exercise" />
-
                                   <v-list>
                                     <v-list-item v-for="(ex, Index) in filterExercises()" :key="Index">
                                       <v-list-item @click="() => selectExercise(training, ex)">
