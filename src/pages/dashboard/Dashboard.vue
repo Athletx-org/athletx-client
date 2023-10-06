@@ -205,8 +205,8 @@
             </v-col>
             <v-col cols="12" md="6" class="mt-5">
               <pie-chart
-                  :series="[completedGoals.length, activeGoals.length, notAchievedGoals.length]"
-                  :labels="['Completed', 'Active', 'Not Achieved']"
+                  :series="Object.values(this.exercisesOccurences)"
+                  :labels="exercisesLabels"
               />
             </v-col>
           </v-row>
@@ -309,7 +309,7 @@
       </v-card>
     </v-col>
     <v-col cols="12" md="6">
-      <v-card height="350" variant="text" elevation="10">
+      <v-card variant="text" elevation="10">
         <v-card-title class="text-center">
           <h2><i>Stats</i></h2>
         </v-card-title>
@@ -348,6 +348,9 @@ export default {
           trainings: []
         }
       },
+      currentWorkoutInfo: {},
+      exercisesOccurences: {},
+      exercisesLabels: [],
       userId: this.$store.state.auth.user._id,
       user: {
         name: '',
@@ -372,8 +375,6 @@ export default {
         {title: 'Workouts', value: 10, color: 'cyan'},
         {title: 'Messages', value: 6, color: 'orange'},
         {title: 'Notifications', value: 2, color: 'green'},
-        {title: 'Friends', value: 8, color: 'pink'},
-
       ],
       goals: reactive([]),
       completedGoals: computed(() => {
@@ -396,6 +397,18 @@ export default {
   methods: {
     async fetchCurrentWorkout() {
       this.currentWorkout = await WorkoutService.getCurrentWorkout(this.userId)
+      this.currentWorkoutInfo = await WorkoutService.getWorkout(this.userId, this.currentWorkout.workoutId._id)
+      this.exercisesOccurences = this.currentWorkoutInfo.trainings
+          .map(training =>
+              training.exercises.map(exercise =>
+                  exercise.exerciseId.type
+              )
+            )
+          .flat(1)
+          .reduce((ac,a) => (ac[a] = ac[a] + 1 || 1, ac),{})
+      Object.keys(this.exercisesOccurences).forEach(exName => {
+        this.exercisesLabels.push(exName)
+      })
       this.currentWorkout.endingDate = new Date(this.currentWorkout.endingDate).toLocaleDateString()
       this.currentWorkout.workoutId.difficulty = this.currentWorkout.workoutId.difficulty === 0 ? 'Easy' : this.currentWorkout.workoutId.difficulty === 1 ? 'Medium' : 'Hard'
     },
