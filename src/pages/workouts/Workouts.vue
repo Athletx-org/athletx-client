@@ -1,9 +1,19 @@
 <template>
   <v-row class="ml-5" justify="space-between" no-gutters="">
     <v-col>
-      <v-btn to="/workouts/new" color="paletteBlue" prepend-icon="mdi-plus-box" variant="outlined" elevation="10"
-        class="mt-5">Create new workout
-      </v-btn>
+      <v-row>
+        <v-btn cols="4" to="/workouts/new" color="paletteBlue" prepend-icon="mdi-plus-box" variant="outlined"
+          elevation="10" class="mt-5 mr-3">Create new workout
+        </v-btn>
+        <v-btn v-if="!importWorkoutDialog" @click="importWorkoutDialog = !importWorkoutDialog" color="paletteBlue"
+          prepend-icon="mdi-plus-box" variant="outlined" elevation="10" class="mt-5">Import workout
+        </v-btn>
+        <v-col cols="4">
+          <v-text-field dense v-if="importWorkoutDialog" autofocus v-model="importWorkoutText" label="Workout Id"
+            append-icon="mdi-send" variant="outlined" @click:append="importWorkout()" />
+        </v-col>
+      </v-row>
+
     </v-col>
     <v-col md="4" class="mt-3">
       <v-timeline direction="horizontal" density="compact" line-thickness="2" line-color="black">
@@ -40,9 +50,20 @@
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn v-on:click.prevent variant="elevated" elevation="6" class="mx-auto" size="small"
-              @click="shareWorkout(workout._id)">
+              @click="openShareWorkoutDialog(workout._id)">
               <v-icon color="black" size="x-large">mdi-share-variant</v-icon>
             </v-btn>
+            <v-dialog v-model="shareWorkoutDialog" max-width="500px">
+              <v-card>
+                <v-card-title>Share Workout Code</v-card-title>
+                <div>
+                  <v-btn @click.prevent="copyWorkoutId()" data-clipboard-target="#workoutId">Copy</v-btn>
+                  <input type="text" v-model="dialogWorkoutId" ref="workoutId" id="workoutId" />
+                </div>
+              </v-card>
+
+              <!-- {{ dialogWorkoutId }} -->
+            </v-dialog>
             <v-btn v-on:click.prevent variant="elevated" elevation="6" class="mx-auto" size="small"
               @click="exportToPDF(workout._id)">
               <v-icon color="black" size="x-large">mdi-printer</v-icon>
@@ -92,7 +113,11 @@ export default {
         medium: 'https://singlecolorimage.com/get/fcfa49/400x100',
         hard: 'https://singlecolorimage.com/get/cc0000/400x100',
       },
-      dialog: false
+      dialog: false,
+      shareWorkoutDialog: false,
+      dialogWorkoutId: "",
+      importWorkoutDialog: false,
+      importWorkoutText: ""
     }
   },
   created() {
@@ -121,8 +146,9 @@ export default {
       }
       return await WorkoutService.setCurrentWorkout(this.userId, activeWorkout)
     },
-    shareWorkout(workoutId) {
-      console.log(workoutId)
+    openShareWorkoutDialog(workoutId) {
+      this.shareWorkoutDialog = true;
+      this.dialogWorkoutId = workoutId
     },
     exportToPDF(workoutId) {
       const toPrint = (document.getElementById(workoutId));
@@ -131,6 +157,16 @@ export default {
       html2pdf().from(clonedElement).save();
       clonedElement.remove();
     },
+    async copyWorkoutId() {
+      await navigator.clipboard.writeText(this.dialogWorkoutId);
+    },
+    async importWorkout() {
+      await WorkoutService.copyWorkout(this.userId, this.importWorkoutText).then(() => {
+        this.importWorkoutDialog = false
+        this.importWorkoutText = ""
+        this.fetchWorkouts()
+      })
+    }
   }
 }
 </script>
