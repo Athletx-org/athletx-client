@@ -20,11 +20,11 @@
         <v-col>
           <v-timeline direction="horizontal" density="compact" line-thickness="2" line-color="black">
             <v-timeline-item dot-color="green" size="small" elevation="6"
-            fill-dot="true"><strong>Easy</strong></v-timeline-item>
+            fill-dot ><strong>Easy</strong></v-timeline-item>
             <v-timeline-item dot-color="yellow" size="small" elevation="6"
-            fill-dot="true"><strong>Medium</strong></v-timeline-item>
+            fill-dot ><strong>Medium</strong></v-timeline-item>
             <v-timeline-item dot-color="red" size="small" elevation="6"
-            fill-dot="true"><strong>Hard</strong></v-timeline-item>
+            fill-dot ><strong>Hard</strong></v-timeline-item>
           </v-timeline>
         </v-col>
       </v-col>
