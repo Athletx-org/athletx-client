@@ -8,12 +8,12 @@
         </v-col>
       </v-col>
       <v-col xs="12" md="4" xl="3">
-        <v-col >
-          <v-btn v-show="!importWorkoutDialog" @click="importWorkoutDialog = !importWorkoutDialog" color="paletteBlue"
+        <v-col>
+          <v-btn  class="align-center" v-show="!importWorkoutDialog" @click="importWorkoutDialog = !importWorkoutDialog" color="paletteBlue"
             prepend-icon="mdi-plus-box" variant="outlined" elevation="10">Import workout
           </v-btn>
-          <v-text-field v-show="importWorkoutDialog" autofocus v-model="importWorkoutText" label="Workout Id"
-          append-icon="mdi-send" variant="outlined" @click:append="importWorkout()" />
+          <v-text-field  class="mt-4 align-center" v-show="importWorkoutDialog" autofocus v-model="importWorkoutText" label="Workout Id"
+          prepend-icon="mdi-close-circle-outline" @click:prepend="importWorkoutDialog = !importWorkoutDialog" append-icon="mdi-send" variant="outlined" @click:append="importWorkout()" />
         </v-col>
       </v-col>
       <v-col xs="12" md="4" xl="4">
