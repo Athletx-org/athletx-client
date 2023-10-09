@@ -5,7 +5,7 @@
                 <div>
                     <v-text-field variant="outlined" v-model="newGoal.text" label="Insert New Goal" outlined>
                     </v-text-field>
-                    <VueDatePicker v-model="newGoal.expiration" :min-date="new Date().setDate(new Date().getDate() + 1)"
+                    <VueDatePicker v-model="newGoal.expiration" :min-date="new Date(new Date().setDate(new Date().getDate() + 1))"
                         placeholder="Select Expiration Date" :enable-time-picker="false"></VueDatePicker>
                     <v-btn class="mt-5 mb-8" color="paletteLightBlue" @click="addGoal">Save Goal</v-btn>
                 </div>
@@ -135,7 +135,7 @@ export default {
         },
         getShortDate(fullDate) {
             const date = new Date(fullDate)
-            return date.getDay() + "-" + date.getMonth() + "-" + date.getFullYear()
+            return date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
         }
     },
     async created() {
