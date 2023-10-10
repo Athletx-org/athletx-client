@@ -54,11 +54,11 @@
                           <div v-else class="mb-8">
                             <v-btn prepend-icon="mdi-magnify" variant="outlined" @click="openDialog(exIndex)">Choose
                               Exercise </v-btn>
-                            <v-dialog v-model="dialog" max-width="500px">
+                            <v-dialog v-model="dialog" max-width="700px">
                               <v-card>
                                 <v-card-title>Select an exercise</v-card-title>
                                 <v-card-text>
-                                  <v-text-field autofocus v-model="searchQuery" label="Search Exercise" />
+                                  <v-text-field autofocus v-model="searchQuery" variant="outlined" label="Search Exercise" />
                                   <v-list>
                                     <v-list-item v-for="(ex, Index) in filterExercises()" :key="Index">
                                       <v-list-item @click="() => selectExercise(training, ex)">
@@ -98,7 +98,7 @@
             </div>
           </draggable>
           <div class="text-center">
-            <v-btn color="paletteLightBlue" size="large" variant="flat" class="mt-5" @click="sendWorkout()">Send
+            <v-btn color="paletteBlue" size="large" variant="flat" class="mt-5" @click="sendWorkout()">Send
               Workout</v-btn>
           </div>
         </div>

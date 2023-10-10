@@ -60,7 +60,7 @@
                 <v-card class="text-center">
                   <v-card-title>Share Workout Code</v-card-title>
                   <div class="mb-2">
-                    <v-btn class="mr-2" @click.prevent="copyWorkoutId()" data-clipboard-target="#workoutId">Copy</v-btn>
+                    <v-btn class="mr-2" color="paletteBlue" @click.prevent="copyWorkoutId()" data-clipboard-target="#workoutId">Copy</v-btn>
                     <input type="text" v-model="dialogWorkoutId" ref="workoutId" id="workoutId" />
                   </div>
                 </v-card>

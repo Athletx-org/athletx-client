@@ -1,9 +1,5 @@
 <template>
-  <div>
-    <h1>{{ editing ? 'Edit Workout' : 'Create Workout' }}</h1>
-    <v-btn color="secondary" variant="elevated" to="/workouts">
-      BACK TO WORKOUTS
-    </v-btn>
+  <div>    
     <workout-form v-if="workoutData" :workoutData="workoutData" @submit="saveWorkout" />
   </div>
 </template>

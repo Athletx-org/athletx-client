@@ -7,7 +7,7 @@
                     </v-text-field>
                     <VueDatePicker v-model="newGoal.expiration" :min-date="new Date(new Date().setDate(new Date().getDate() + 1))"
                         placeholder="Select Expiration Date" :enable-time-picker="false"></VueDatePicker>
-                    <v-btn class="mt-5 mb-8" color="paletteLightBlue" @click="addGoal">Save Goal</v-btn>
+                    <v-btn class="mt-5 mb-8" color="paletteBlue" @click="addGoal">Save Goal</v-btn>
                 </div>
                 <h2>
                     Active Goals
