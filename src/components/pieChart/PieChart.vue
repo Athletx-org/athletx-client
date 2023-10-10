@@ -1,5 +1,5 @@
 <template>
-  <apexchart type="pie" width="380" :options="chartOptions" :series="series"></apexchart>
+  <apexchart type="pie" width="300" :options="chartOptions" :series="series"></apexchart>
 </template>
 <script>
 import VueApexCharts from "vue3-apexcharts";
@@ -17,11 +17,14 @@ export default {
     return {
       chartOptions: {
         labels: this.labels,
+        legend: {
+              position: 'bottom'
+            },
         responsive: [{
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
+              width: 300
             },
             legend: {
               position: 'bottom'
