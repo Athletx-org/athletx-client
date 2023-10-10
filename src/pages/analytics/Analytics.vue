@@ -1,6 +1,6 @@
 <template>
   <v-container class="te">
-    <v-row class="mt-md-15" justify="center">
+    <v-row justify="center">
       <v-col cols="12" xs="12" md="6" l="5" xl="5">
         <v-card>
           <v-card-title>Weight</v-card-title>

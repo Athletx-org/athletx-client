@@ -10,7 +10,7 @@
                 <strong>Difficoltà:</strong> {{ workout.difficulty }}
             </p>
             <p>
-                <strong>Durata:</strong> {{ workout.duration }}
+                <strong>Durata:</strong> {{ workout.duration }} days
             </p>
 
             <div class="mt-5 mb-5" v-for="(training, index) in workout.trainings" :key="index">
@@ -21,8 +21,8 @@
                             <th>exercise</th>
                             <th>series</th>
                             <th>reps</th>
-                            <th>rest</th>
-                            <th>duration</th>
+                            <th>rest (sec)</th>
+                            <th>duration (min)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,8 +30,8 @@
                             <td>{{ exercise.exerciseId.name }}</td>
                             <td>{{ exercise.series }}</td>
                             <td>{{ exercise.reps }}</td>
-                            <td>{{ exercise.rest }}</td>
-                            <td>{{ exercise.duration }}</td>
+                            <td>{{ exercise.rest }} </td>
+                            <td>{{ exercise.duration }} </td>
                         </tr>
                     </tbody>
                 </v-table>
