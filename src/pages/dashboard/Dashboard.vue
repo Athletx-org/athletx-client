@@ -1,5 +1,5 @@
 <template>
-  <v-row align="center">
+  <v-row justify="center">
     <v-col cols="12" md="6">
       <v-card variant="elevated" elevation="10">
         <v-card-title class="text-center">
@@ -60,7 +60,7 @@
               <v-text-field
                   readonly
                   variant="plain"
-                  label="Height"
+                  label="Height (cm)"
                   v-model="user.height"
                   hide-details
               >
@@ -157,7 +157,7 @@
         <v-card-title class="text-center">
           <h2><i>Current Workout</i></h2>
         </v-card-title>
-        <v-card-text class="ml-5">
+        <v-card-text v-if="currentWorkout" class="ml-5">
           <v-row class="text-center mt-3" justify="space-around">
             <v-col md="1"></v-col>
             <v-col cols="12" md="4">
@@ -232,6 +232,9 @@
               </v-btn>
             </v-col>
           </v-row>
+        </v-card-text>
+        <v-card-text v-if="!currentWorkout">
+          Current Workout Not Set
         </v-card-text>
       </v-card>
     </v-col>
@@ -397,20 +400,23 @@ export default {
   methods: {
     async fetchCurrentWorkout() {
       this.currentWorkout = await WorkoutService.getCurrentWorkout(this.userId)
-      this.currentWorkoutInfo = await WorkoutService.getWorkout(this.userId, this.currentWorkout.workoutId._id)
-      this.exercisesOccurences = this.currentWorkoutInfo.trainings
-          .map(training =>
-              training.exercises.map(exercise =>
-                  exercise.exerciseId.type
-              )
-            )
-          .flat(1)
-          .reduce((ac,a) => (ac[a] = ac[a] + 1 || 1, ac),{})
-      Object.keys(this.exercisesOccurences).forEach(exName => {
-        this.exercisesLabels.push(exName)
-      })
-      this.currentWorkout.endingDate = new Date(this.currentWorkout.endingDate).toLocaleDateString()
-      this.currentWorkout.workoutId.difficulty = this.currentWorkout.workoutId.difficulty === 0 ? 'Easy' : this.currentWorkout.workoutId.difficulty === 1 ? 'Medium' : 'Hard'
+      if (this.currentWorkout){
+
+        this.currentWorkoutInfo = await WorkoutService.getWorkout(this.userId, this.currentWorkout.workoutId._id)
+        this.exercisesOccurences = this.currentWorkoutInfo.trainings
+        .map(training =>
+        training.exercises.map(exercise =>
+        exercise.exerciseId.type
+        )
+        )
+        .flat(1)
+        .reduce((ac,a) => (ac[a] = ac[a] + 1 || 1, ac),{})
+        Object.keys(this.exercisesOccurences).forEach(exName => {
+          this.exercisesLabels.push(exName)
+        })
+        this.currentWorkout.endingDate = new Date(this.currentWorkout.endingDate).toLocaleDateString()
+        this.currentWorkout.workoutId.difficulty = this.currentWorkout.workoutId.difficulty === 0 ? 'Easy' : this.currentWorkout.workoutId.difficulty === 1 ? 'Medium' : 'Hard'
+      }
     },
     async fetchUserInfo() {
       await UserService.getUserInfo(this.userId).then(
