@@ -10,10 +10,10 @@
           <v-container>
             <v-row justify="center">
               <v-col cols="12" md="5">
-                <v-img :src="profilePicPath" alt="" class="profileImage" />
+                <v-img :src="profilePicPath" alt="profile image" class="profileImage" />
               </v-col>
               <v-col cols="12" md="5" class="mt-8">
-                <v-file-input label="Change profile picture" accept="image/*" v-model="files" variant="outlined"
+                <v-file-input v-if="editingProfile" label="Change profile picture" accept="image/*" v-model="files" variant="outlined"
                   @change="handlePictureChange">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
@@ -25,7 +25,7 @@
             </v-row>
             <v-row justify="center">
               <v-col cols="12" md="5">
-                <v-text-field label="Name" v-model="user.name" clearable variant="outlined" color="blue-darken-1">
+                <v-text-field label="Name" v-model="user.name" :readonly="!editingProfile" variant="outlined" color="blue-darken-1">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
                       <v-img :src="require('@/assets/img/icons/name.png')" />
@@ -34,7 +34,7 @@
                 </v-text-field>
               </v-col>
               <v-col cols="12" md="5">
-                <v-text-field label="Surname" v-model="user.surname" clearable variant="outlined" color="blue-darken-1">
+                <v-text-field label="Surname" v-model="user.surname" :readonly="!editingProfile" variant="outlined" color="blue-darken-1">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
                       <v-img :src="require('@/assets/img/icons/name.png')" />
@@ -45,7 +45,7 @@
             </v-row>
             <v-row justify="center">
               <v-col cols="12" md="5">
-                <v-text-field label="City" v-model="user.city" clearable variant="outlined" color="blue-darken-1">
+                <v-text-field label="City" v-model="user.city" :readonly="!editingProfile" variant="outlined" color="blue-darken-1">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
                       <v-img :src="require('@/assets/img/icons/city.png')" />
@@ -54,7 +54,7 @@
                 </v-text-field>
               </v-col>
               <v-col cols="12" md="5">
-                <v-text-field label="Country" v-model="user.country" clearable variant="outlined" color="blue-darken-1">
+                <v-text-field label="Country" v-model="user.country" :readonly="!editingProfile" variant="outlined" color="blue-darken-1">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
                       <v-img :src="require('@/assets/img/icons/country.png')" />
@@ -65,7 +65,7 @@
             </v-row>
             <v-row justify="center">
               <v-col cols="12" md="5" class="mr-2">
-                <v-text-field color="blue-darken-1" variant="outlined" type="number" :min="0" :max="100" label="Age"
+                <v-text-field color="blue-darken-1" variant="outlined" :readonly="!editingProfile" type="number" :min="0" :max="100" label="Age"
                   v-model="user.age">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
@@ -75,7 +75,7 @@
                 </v-text-field>
               </v-col>
               <v-col cols="12" md="5">
-                <v-text-field type="number" :min="0" :max="250" color="blue-darken-1" variant="outlined"
+                <v-text-field type="number" :min="0" :max="250" :readonly="!editingProfile" color="blue-darken-1" variant="outlined"
                   label="Height (Cm)" v-model="user.height">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
@@ -87,7 +87,7 @@
             </v-row>
             <v-row justify="center">
               <v-col cols="10">
-                <v-textarea variant="outlined" color="blue-darken-1" clearable label="About Me" v-model="user.bio">
+                <v-textarea variant="outlined" color="blue-darken-1" :readonly="!editingProfile" label="About Me" v-model="user.bio">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
                       <v-img :src="require('@/assets/img/icons/bio.png')" />
@@ -97,11 +97,14 @@
               </v-col>
             </v-row>
             <v-row class="text-center my-3" no-gutters justify="center">
-              <v-btn size="small" color="blue-darken-1" variant="elevated" elevation="6" class="mr-1"
+              <v-btn v-if="editingProfile" size="small" color="paletteBlue" variant="elevated" elevation="6" class="mr-1"
                 @click="updateProfile">
                 Save
               </v-btn>
-              <v-btn size="small" color="red" variant="elevated" elevation="6" @click="cancelEditing" to="/profile">
+              <v-btn v-if="!editingProfile" size="small" color="paletteBlue" variant="elevated" elevation="6" @click="editingProfile=!editingProfile" to="/profile">
+                EDIT
+              </v-btn>
+              <v-btn v-if="editingProfile" size="small" color="red" variant="elevated" elevation="6" @click="cancelEditing" to="/profile">
                 CANCEL
               </v-btn>
             </v-row>
@@ -132,7 +135,7 @@
             </v-row>
             <v-row justify="center" no-gutters>
               <v-col cols="12" md="8">
-                <v-text-field type="number" label="Body Weight (Kg)" :min="0" :max="250" variant="outlined"
+                <v-text-field type="number" label="Body Weight (Kg)" :readonly="!editingImprovements" :min="0" :max="250" variant="outlined"
                   v-model="improvement.bodyWeight">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
@@ -144,7 +147,7 @@
             </v-row>
             <v-row justify="center" no-gutters>
               <v-col cols="12" md="8">
-                <v-text-field type="number" label="Body Fat (%)" variant="outlined" :max="100" :min="0"
+                <v-text-field type="number" label="Body Fat (%)" :readonly="!editingImprovements" variant="outlined" :max="100" :min="0"
                   v-model="improvement.bodyFat">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
@@ -156,7 +159,7 @@
             </v-row>
             <v-row justify="center" no-gutters>
               <v-col cols="12" md="4">
-                <v-text-field type="number" label="Biceps (cm)" variant="outlined" v-model="improvement.biceps" :min="0"
+                <v-text-field type="number" label="Biceps (cm)" variant="outlined" :readonly="!editingImprovements" v-model="improvement.biceps" :min="0"
                   :max="50">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
@@ -166,7 +169,7 @@
                 </v-text-field>
               </v-col>
               <v-col cols="12" md="4">
-                <v-text-field type="number" label="Chest (cm)" variant="outlined" v-model="improvement.chest" :min="0"
+                <v-text-field type="number" label="Chest (cm)" variant="outlined" :readonly="!editingImprovements" v-model="improvement.chest" :min="0"
                   :max="100">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
@@ -176,7 +179,7 @@
                 </v-text-field>
               </v-col>
               <v-col cols="12" md="4">
-                <v-text-field type="number" label="Quadriceps (cm)" variant="outlined" v-model="improvement.quadriceps"
+                <v-text-field type="number" label="Quadriceps (cm)" variant="outlined" :readonly="!editingImprovements" v-model="improvement.quadriceps"
                   :min="0" :max="100">
                   <template v-slot:prepend-inner>
                     <v-icon size="large">
@@ -187,11 +190,15 @@
               </v-col>
             </v-row>
             <v-row class="text-center mb-2" justify="center">
-              <v-btn variant="elevated" size="small" color="paletteBlue" elevation="6" v-on:click.prevent
-                @click="addNewImprovement"> Save
+              <v-btn v-if="editingImprovements" size="small" color="paletteBlue" variant="elevated" elevation="6" class="mr-1"
+                @click="addNewImprovement">
+                Save
               </v-btn>
-              <v-btn variant="flat" size="small" class="ml-1" color="red" elevation="6" v-on:click.prevent
-                @click="cancelEditing"> Cancel
+              <v-btn v-if="!editingImprovements" size="small" color="paletteBlue" variant="elevated" elevation="6" @click="editingImprovements=!editingImprovements" to="/profile">
+                EDIT
+              </v-btn>
+              <v-btn v-if="editingImprovements" size="small" color="red" variant="elevated" elevation="6" @click="cancelEditing" to="/profile">
+                CANCEL
               </v-btn>
             </v-row>
           </v-form>
@@ -208,7 +215,8 @@ export default {
   data() {
     return {
       userId: this.$store.state.auth.user._id,
-      editing: true,
+      editingImprovements: false,
+      editingProfile: false,
       error: null,
       user: {
         name: '',
@@ -263,10 +271,13 @@ export default {
       }
       await UserService.updateUserInfo(this.userId, this.user)
       await this.fetchUserInfo()
+      this.editingProfile = false
     },
     async cancelEditing() {
       await this.fetchUserInfo()
       window.location.reload()
+      this.editingProfile = false
+      this.editingImprovements = false
     },
     handlePictureChange() {
       if (this.files !== null) {
@@ -277,6 +288,7 @@ export default {
     async addNewImprovement() {
       this.improvement.timeStamp = Date.now()
       await UserService.addImprovement(this.userId, this.improvement)
+      this.editingImprovements = false
     },
   }
 };

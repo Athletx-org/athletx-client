@@ -9,7 +9,7 @@
           <v-row class="mt-3 text-center">
             <v-col md="1"></v-col>
             <v-col cols="12" md="5">
-              <v-img class="mt-2 profileImage" :src="profilePicPath"/>
+              <v-img class="mt-2 profileImage" alt="profile image" :src="profilePicPath"/>
             </v-col>
             <v-col cols="6" md="3">
               <v-text-field
