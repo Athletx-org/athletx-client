@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@vue/cli-plugin-unit-jest": "^5.0.8",
-    "@vuepic/vue-datepicker": "^6.0.3",
+    "@vuepic/vue-datepicker": "^7.0.0",
     "apexcharts": "^3.42.0",
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
