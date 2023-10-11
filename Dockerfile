@@ -1,7 +1,7 @@
 # build stage
 FROM node:alpine as build-stage
 ENV PUBLIC_PATH="/"
-ENV VUE_APP_SERVER_URL="http://localhost:3000"
+ENV VUE_APP_BASE_URL="http://localhost:3000"
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
