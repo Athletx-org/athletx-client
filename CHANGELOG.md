@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/AthletX-org/athletx-client/compare/1.0.0...1.1.0) (2023-10-11)
+
+
+### Features
+
+* add nginx configuration ([94910b2](https://github.com/AthletX-org/athletx-client/commit/94910b22c3d6e1fef7f7bcc582496461dfd17b41))
+
 ## 1.0.0 (2023-10-11)
 
 
