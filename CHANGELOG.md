@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/AthletX-org/athletx-client/compare/1.1.0...1.1.1) (2023-10-11)
+
+
+### Bug Fixes
+
+* correct vue app server url variable ([4e55cce](https://github.com/AthletX-org/athletx-client/commit/4e55cce250d63d84cc5b92183c0112b412c8b274))
+
 ## [1.1.0](https://github.com/AthletX-org/athletx-client/compare/1.0.0...1.1.0) (2023-10-11)
 
 
