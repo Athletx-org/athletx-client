@@ -197,4 +197,3 @@ export default {
 </script>
 
 <style src="./WorkoutForm.scss" lang="scss" scoped />
-<style src="vue-scroll-picker/lib/style.css"></style>
