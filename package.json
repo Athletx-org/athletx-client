@@ -30,7 +30,7 @@
     "@vue/cli-service": "~5.0.0",
     "eslint": "^8.0.0",
     "eslint-plugin-vue": "^9.0.0",
-    "semantic-release-preconfigured-conventional-commits": "1.1.68",
+    "semantic-release-preconfigured-conventional-commits": "1.1.69",
     "sass": "^1.66.1",
     "sass-loader": "^13.3.2"
   },
