@@ -195,5 +195,5 @@ export default {
   },
 };
 </script>
-
 <style src="./WorkoutForm.scss" lang="scss" scoped />
+
