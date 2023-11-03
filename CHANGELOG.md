@@ -1,3 +1,45 @@
+## [1.2.0](https://github.com/AthletX-org/athletx-client/compare/1.1.1...1.2.0) (2023-11-03)
+
+
+### Features
+
+* squash develop into main ([4a23264](https://github.com/AthletX-org/athletx-client/commit/4a232642b6660334d313849204663a15424b881d))
+
+
+### Dependency updates
+
+* **deps:** update dependency @babel/core to v7.23.2 ([90f2a44](https://github.com/AthletX-org/athletx-client/commit/90f2a44a5dc756cc1208cd5e09457a3e69e431dd))
+* **deps:** update dependency @vuepic/vue-datepicker to v7.2.0 ([9ab1755](https://github.com/AthletX-org/athletx-client/commit/9ab17550c27761559157aa31ebe2f576f3eb588b))
+* **deps:** update dependency apexcharts to v3.44.0 ([c46b662](https://github.com/AthletX-org/athletx-client/commit/c46b662ee4d14cf865346241938d1d64591b0c06))
+* **deps:** update dependency axios to v1.6.0 ([990d7a7](https://github.com/AthletX-org/athletx-client/commit/990d7a7d6cf1faef97cf0ffc80e9fb34d1d601fe))
+* **deps:** update dependency core-js to v3.33.1 ([d2d21ca](https://github.com/AthletX-org/athletx-client/commit/d2d21ca4f18af32a99404edae8cc6ae3888dee95))
+* **deps:** update dependency core-js to v3.33.2 ([45795ad](https://github.com/AthletX-org/athletx-client/commit/45795add2a681ca4ba614cc10d922b617d08cd44))
+* **deps:** update dependency eslint to v8.52.0 ([15fd80b](https://github.com/AthletX-org/athletx-client/commit/15fd80b4ca6797a7327f047d1518fcad34a895b5))
+* **deps:** update dependency eslint-plugin-vue to v9.18.0 ([10b8f5d](https://github.com/AthletX-org/athletx-client/commit/10b8f5db6891d8a2f525c719392d36ad3de45726))
+* **deps:** update dependency eslint-plugin-vue to v9.18.1 ([7939af0](https://github.com/AthletX-org/athletx-client/commit/7939af091aa86ef2e212e3029d2d941a0da71cd8))
+* **deps:** update dependency sass to v1.69.3 ([5348bbe](https://github.com/AthletX-org/athletx-client/commit/5348bbe5baf1108d8cba2237a5a9010b82511ec9))
+* **deps:** update dependency sass to v1.69.4 ([5cde399](https://github.com/AthletX-org/athletx-client/commit/5cde399cc5920bc19500ca6a15d526f054e69a60))
+* **deps:** update dependency sass to v1.69.5 ([c5ef7ee](https://github.com/AthletX-org/athletx-client/commit/c5ef7eefc05ef0db5837275188eabbd7b0c6eb90))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.69 ([10487ae](https://github.com/AthletX-org/athletx-client/commit/10487aef104ff26fd03dd240380262c3d28084b6))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.70 ([7fa8523](https://github.com/AthletX-org/athletx-client/commit/7fa8523fee99883bfdacb980a5d2570077ba6090))
+* **deps:** update dependency vue to v3.3.5 ([3a6d9fe](https://github.com/AthletX-org/athletx-client/commit/3a6d9fe6c818ad8e53c691ebe7b053b55e5d5ac3))
+* **deps:** update dependency vue to v3.3.6 ([13f4512](https://github.com/AthletX-org/athletx-client/commit/13f4512df7a93f7077d90a2a894ec9c5d87e2f79))
+* **deps:** update dependency vue to v3.3.7 ([e71ac87](https://github.com/AthletX-org/athletx-client/commit/e71ac87a789e25f49b85c91a905895bd1ae5c9bd))
+* **deps:** update dependency vuetify to v3.3.22 ([e9f956b](https://github.com/AthletX-org/athletx-client/commit/e9f956b7e012ee11dae32897eafcf7e92c5921da))
+* **deps:** update dependency vuetify to v3.3.23 ([eeda4b3](https://github.com/AthletX-org/athletx-client/commit/eeda4b39b2390a4e541282021ade31fe792ab3ad))
+* **deps:** update node.js to 20.9 ([3bb7cb0](https://github.com/AthletX-org/athletx-client/commit/3bb7cb05f85f32eb0420848b22eca46f767b2bb2))
+* **deps:** update node.js to v20 ([d6d9cef](https://github.com/AthletX-org/athletx-client/commit/d6d9cefb01a6475f5a1c787f3d5620eac401e063))
+
+
+### Build and continuous integration
+
+* **deps:** update actions/setup-node action to v4 ([a17b655](https://github.com/AthletX-org/athletx-client/commit/a17b655c0a013117169d17f55008c79753ea782f))
+
+
+### General maintenance
+
+* update readme ([69e1ebe](https://github.com/AthletX-org/athletx-client/commit/69e1ebe15369eedf5a083adb1c91fbaff9979df8))
+
 ## [1.1.1](https://github.com/AthletX-org/athletx-client/compare/1.1.0...1.1.1) (2023-10-11)
 
 
