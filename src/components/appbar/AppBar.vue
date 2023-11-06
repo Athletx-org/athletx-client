@@ -7,7 +7,7 @@
       </v-toolbar-title>
       <v-spacer/>
 
-      <v-btn to="/login" class="bg-blue-darken-1 mx-5">
+      <v-btn variant="elevated" elevation="1" to="/login" color="paletteBlue mx-5">
         <strong>GET STARTED</strong>
       </v-btn>
     </v-app-bar>

@@ -203,7 +203,7 @@
                 </template>
               </v-text-field>
             </v-col>
-            <v-col cols="12" md="6" class="mt-5">
+            <v-col cols="12" md="6">
               <pie-chart
                   :series="Object.values(this.exercisesOccurences)"
                   :labels="exercisesLabels"
@@ -312,14 +312,14 @@
       </v-card>
     </v-col>
     <v-col cols="12" md="6">
-      <v-card variant="text" elevation="10">
+      <v-card variant="text" elevation="10" class="fill-height">
         <v-card-title class="text-center">
           <h2><i>Stats</i></h2>
         </v-card-title>
-        <v-card-text class="mt-14">
-          <v-row justify="center">
-            <v-col v-for="(stat, index) in stats" :key="index">
-              <v-card variant="elevated" elevation="10" width="150" height="130" class="stat-card" :color="stat.color">
+        <v-card-text class="mt-14 text-center">
+          <v-row class="text-center" align="center" justify="center" dense>
+            <v-col v-for="(stat, index) in stats" :key="index" class="d-flex flex-column justify-center align-center">
+              <v-card variant="elevated" elevation="10" width="150" height="130" class="stat-card text-center" :color="stat.color">
                 <v-card-title class="stat-title">{{ stat.title }}</v-card-title>
                 <v-divider color="black"/>
                 <v-card-text class="stat-value">{{ stat.value }}</v-card-text>
@@ -365,7 +365,7 @@ export default {
         bio: '',
         profilePic: '',
       },
-      profilePicPath: null,
+      profilePicPath: require('@/assets/img/default_profile_pic.png'),
       improvement: {
         timeStamp: null,
         bodyWeight: null,
@@ -375,7 +375,7 @@ export default {
         quadriceps: null
       },
       stats: [
-        {title: 'Workouts', value: 10, color: 'cyan'},
+        {title: 'Workouts', value: 5, color: 'cyan'},
         {title: 'Messages', value: 6, color: 'orange'},
         {title: 'Notifications', value: 2, color: 'green'},
       ],
@@ -423,7 +423,10 @@ export default {
           res => {
             if (res != null) {
               this.user = res
-              this.profilePicPath = process.env.VUE_APP_BASE_URL + this.user.profilePic
+              if(this.user.profilePic) {
+                console.log(this.user.profilePic)
+                this.profilePicPath = process.env.VUE_APP_BASE_URL + this.user.profilePic
+              }
             }
           })
     },

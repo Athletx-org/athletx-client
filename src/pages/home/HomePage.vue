@@ -25,7 +25,10 @@
         <v-col cols="12" md="5" class="text-center">
           <div class="image-container mt-10">
             <v-scroll-x-transition>
-              <img src="@/assets/img/home_backgrounds/standing_man_weights.jpg" class="background-image" alt="athletx home page image">
+              <img src="@/assets/img/home_backgrounds/standing_man_weights.jpg"
+                   class="background-image"
+                   alt="athletx home page image"
+                  >
             </v-scroll-x-transition>
           </div>
         </v-col>
@@ -46,7 +49,7 @@
                       max-width="80px"
                       class="d-block ml-auto mr-auto mt-5"
                   ></v-img>
-                  <v-card-title><h4>{{ feature.title }}</h4></v-card-title>
+                  <v-card-title class="text-wrap"><h4>{{ feature.title }}</h4></v-card-title>
                   <v-card-text>
                     {{ feature.text }}
                   </v-card-text>

@@ -1,5 +1,5 @@
 <template>
-  <h2 class="text-center text-decoration-underline">Sign Up for an Account</h2>
+  <h2 class="text-center text-decoration-underline">Sign up for an account</h2>
   <v-row align="center" justify="center" class="text-center" no-gutters>
     <v-col cols="12" sm="6">
       <v-form v-model="formValid" fast-fail @submit.prevent="handleSignup">
@@ -24,11 +24,11 @@
               v-model="user.confirmPassword" :rules="confirmPasswordRule"
               :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" required />
           </v-col>
-          <v-row no-gutters>
-            <v-col cols="12">
-              <v-checkbox color="success" label="I agree to site terms and conditions" />
+        </v-row>
+        <v-row no-gutters class="text-center" justify="center">
+            <v-col cols="12" class="text-center">
+              <v-checkbox class="text-center" color="success" label="I agree to site terms and conditions" />
             </v-col>
-          </v-row>
         </v-row>
         <v-btn type="submit" color="blue" elevation="6" class="mt-5" tile>Sign up</v-btn>
       </v-form>

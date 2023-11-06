@@ -2,6 +2,7 @@ import axiosInstance from "@/utils/axios";
 import authHeader from "@/services/auth-header";
 
 class WorkoutService {
+
   async getWorkouts(userId) {
     const response = await axiosInstance.get("/" + userId + "/workouts", {
       headers: authHeader(),
@@ -40,12 +41,11 @@ class WorkoutService {
   }
 
   async createWorkout(userId, workout) {
-    const response = await axiosInstance.post(
-      "/" + userId + "/workouts",
-      workout,
-      { headers: authHeader() }
+    return await axiosInstance.post(
+        "/" + userId + "/workouts",
+        workout,
+        {headers: authHeader()}
     );
-    return response;
   }
 
   async updateWorkout(userId, workoutId, workout) {

@@ -7,4 +7,4 @@ function authHeader(){
     }
 }
 
-export default authHeader
+export default authHeader;

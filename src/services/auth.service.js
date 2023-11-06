@@ -1,6 +1,8 @@
 import axiosInstance from '@/utils/axios';
-class AuthService{
-    async login(user){
+
+class AuthService {
+
+    async login(user) {
         const response = await axiosInstance.post("/auth/login", user);
         const usr = response.data.user;
         if (usr) {
@@ -9,13 +11,13 @@ class AuthService{
         return usr;
     }
 
-    async logout(){
+    async logout() {
         const user = localStorage.getItem("user")
         await axiosInstance.post("/auth/logout", user);
         localStorage.removeItem('user');
     }
 
-    signup(user){
+    signup(user) {
         return axiosInstance.post("/auth/signup", user)
     }
 }
