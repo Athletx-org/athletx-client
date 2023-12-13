@@ -20,7 +20,7 @@
     "vue3-apexcharts": "^1.4.4",
     "vuetify": "^3.3.14",
     "vuex": "^4.1.0",
-    "webpack-plugin-vuetify": "^2.0.1"
+    "webpack-plugin-vuetify": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
