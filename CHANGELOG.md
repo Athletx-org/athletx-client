@@ -1,3 +1,93 @@
+## [1.2.1](https://github.com/AthletX-org/athletx-client/compare/1.2.0...1.2.1) (2024-01-08)
+
+
+### Dependency updates
+
+* **deps:** update dependency @babel/core to v7.23.3 ([3025302](https://github.com/AthletX-org/athletx-client/commit/302530278a150b33fee81ab8e8beb115d9892f15))
+* **deps:** update dependency @babel/core to v7.23.5 ([c07fd46](https://github.com/AthletX-org/athletx-client/commit/c07fd46e9936b705a1ddd2aca7b07813520e2b84))
+* **deps:** update dependency @babel/core to v7.23.6 ([470e0ff](https://github.com/AthletX-org/athletx-client/commit/470e0ff196c9aa675db5a74c83e2fc8442c13bf5))
+* **deps:** update dependency @babel/core to v7.23.7 ([b500e71](https://github.com/AthletX-org/athletx-client/commit/b500e7125513376b462fc91e05d3133952856187))
+* **deps:** update dependency @babel/eslint-parser to v7.23.3 ([4ad2497](https://github.com/AthletX-org/athletx-client/commit/4ad2497eb52e816c5bb92d5811b6334b884bb0a4))
+* **deps:** update dependency @mdi/font to v7.4.47 ([b489785](https://github.com/AthletX-org/athletx-client/commit/b4897856fe350aeba231d9050bbcc2eb33657c7e))
+* **deps:** update dependency @vuepic/vue-datepicker to v7.2.1 ([629a60c](https://github.com/AthletX-org/athletx-client/commit/629a60cca430b3bc4764b915f175bd38fc0a9f55))
+* **deps:** update dependency @vuepic/vue-datepicker to v7.2.2 ([46b31b1](https://github.com/AthletX-org/athletx-client/commit/46b31b149ba7a38e3ab0c9666f47aca77be846b7))
+* **deps:** update dependency @vuepic/vue-datepicker to v7.3.0 ([e376224](https://github.com/AthletX-org/athletx-client/commit/e37622464b9d7b260467d8da1c0dba6c6bf43952))
+* **deps:** update dependency @vuepic/vue-datepicker to v7.4.0 ([187ad1e](https://github.com/AthletX-org/athletx-client/commit/187ad1e42a033fdf96b36f0aeebef5ffdabce8f0))
+* **deps:** update dependency apexcharts to v3.44.1 ([3a2791f](https://github.com/AthletX-org/athletx-client/commit/3a2791ff5d22ade8eed9f63195cc09174877109d))
+* **deps:** update dependency apexcharts to v3.44.2 ([555be3b](https://github.com/AthletX-org/athletx-client/commit/555be3b333211fb14eb31fd39ba1fe6134e56dbb))
+* **deps:** update dependency apexcharts to v3.45.0 ([e688127](https://github.com/AthletX-org/athletx-client/commit/e688127b3ec3a5c770da27124e352cf856b2e524))
+* **deps:** update dependency apexcharts to v3.45.1 ([70e9cac](https://github.com/AthletX-org/athletx-client/commit/70e9cac2acb9eabc9370dd977078a559015dad53))
+* **deps:** update dependency axios to v1.6.1 ([5fc3b12](https://github.com/AthletX-org/athletx-client/commit/5fc3b125bc18a585a06bfe2721f669620d829b20))
+* **deps:** update dependency axios to v1.6.2 ([31b5f17](https://github.com/AthletX-org/athletx-client/commit/31b5f176de85465ca9e4478675de8480ce08fb31))
+* **deps:** update dependency axios to v1.6.3 ([2c26bc1](https://github.com/AthletX-org/athletx-client/commit/2c26bc1327d92aec46c9efe03f329da2c558f1ee))
+* **deps:** update dependency axios to v1.6.4 ([87fe399](https://github.com/AthletX-org/athletx-client/commit/87fe39905228bd6b0a06a7a4ce41dcb79ca01bd3))
+* **deps:** update dependency axios to v1.6.5 ([057b329](https://github.com/AthletX-org/athletx-client/commit/057b329992343896a5e80a2bdf7e38d74cc85207))
+* **deps:** update dependency core-js to v3.33.3 ([b4ea24b](https://github.com/AthletX-org/athletx-client/commit/b4ea24b721cc92a5eaf76ff17c8c28a38e762a79))
+* **deps:** update dependency core-js to v3.34.0 ([4307a67](https://github.com/AthletX-org/athletx-client/commit/4307a67d03e83f818a2d9deacd13974f4643011b))
+* **deps:** update dependency core-js to v3.35.0 ([55cffd6](https://github.com/AthletX-org/athletx-client/commit/55cffd6d5af1c94f15dd467c3e73f368767c5328))
+* **deps:** update dependency eslint to v8.53.0 ([5b10c7e](https://github.com/AthletX-org/athletx-client/commit/5b10c7e367103dc559aaa6a8fd6f39bbe01fcd74))
+* **deps:** update dependency eslint to v8.54.0 ([b57ae02](https://github.com/AthletX-org/athletx-client/commit/b57ae02e30152b9b8c9d11bfa07e55f65df88e52))
+* **deps:** update dependency eslint to v8.55.0 ([3f534ec](https://github.com/AthletX-org/athletx-client/commit/3f534ec5104d8b0e5de08880311d9b89d1eeea93))
+* **deps:** update dependency eslint to v8.56.0 ([bf8e045](https://github.com/AthletX-org/athletx-client/commit/bf8e0456cf13474094933fa00cfe435509fe6923))
+* **deps:** update dependency eslint-plugin-vue to v9.19.1 ([92a0b2a](https://github.com/AthletX-org/athletx-client/commit/92a0b2a264b7a659794ad33a38ecd478ac8d6568))
+* **deps:** update dependency eslint-plugin-vue to v9.19.2 ([111d1ec](https://github.com/AthletX-org/athletx-client/commit/111d1ec9dc09330117a38cc92a439add5b4a8213))
+* **deps:** update dependency sass to v1.69.6 ([9c02e1a](https://github.com/AthletX-org/athletx-client/commit/9c02e1affb1fa31dd22b8a800b77bf1940930484))
+* **deps:** update dependency sass to v1.69.7 ([098707d](https://github.com/AthletX-org/athletx-client/commit/098707df23e17b103065bf24566f40cf6149f966))
+* **deps:** update dependency sass-loader to v13.3.3 ([ae70c00](https://github.com/AthletX-org/athletx-client/commit/ae70c00f05886863ae98a70631d2ca944194ae28))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.71 ([04c139f](https://github.com/AthletX-org/athletx-client/commit/04c139f22862cb8fbc2d4b5948a43a9f6b2b388f))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.72 ([6b52a24](https://github.com/AthletX-org/athletx-client/commit/6b52a24ffcd6ee94a97bd6577b7b37f3344d3c69))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.73 ([396d5c2](https://github.com/AthletX-org/athletx-client/commit/396d5c22ac20e23dd73c3db061e0e3363f48a810))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.74 ([1de6d35](https://github.com/AthletX-org/athletx-client/commit/1de6d35b2a5e54c3cc641ed37dae8f1e199a3e53))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.75 ([b0993e6](https://github.com/AthletX-org/athletx-client/commit/b0993e6a1366f34fb3e6c0af105fe0355d66c4ab))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.76 ([982b7e4](https://github.com/AthletX-org/athletx-client/commit/982b7e4f78cc88460ec4df426a729f95baf6b536))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.77 ([1b2beff](https://github.com/AthletX-org/athletx-client/commit/1b2beffa06e25d377c5640baf16279fb93b19041))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.78 ([021ca48](https://github.com/AthletX-org/athletx-client/commit/021ca4864fc3dbd61a5451710f1599367e9fa24e))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.79 ([117a061](https://github.com/AthletX-org/athletx-client/commit/117a061118f39a5cf078473f6e71b77f07b28d34))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.80 ([e401991](https://github.com/AthletX-org/athletx-client/commit/e401991959aafabc3411dc4a1e6882c774bf9bdb))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.81 ([344848a](https://github.com/AthletX-org/athletx-client/commit/344848a7a5b9d6284c53b02c7c9307ee410e6ba5))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.82 ([0fb52b4](https://github.com/AthletX-org/athletx-client/commit/0fb52b471f2c10d60aad7a3318511528ca42da3e))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.83 ([6a1d2a9](https://github.com/AthletX-org/athletx-client/commit/6a1d2a978450335adfecd4be8756d0a4b5bf4d1a))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.84 ([33b75f8](https://github.com/AthletX-org/athletx-client/commit/33b75f82e0c9c98eae868d3787cc715e4ece4405))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.85 ([298fb45](https://github.com/AthletX-org/athletx-client/commit/298fb45b4f560101b042a9ca360bb50cc27b3160))
+* **deps:** update dependency vue to v3.3.10 ([a30bfa0](https://github.com/AthletX-org/athletx-client/commit/a30bfa0c5c4f7a74023f61188409ab31029ffcde))
+* **deps:** update dependency vue to v3.3.11 ([8ac8ecb](https://github.com/AthletX-org/athletx-client/commit/8ac8ecbdc68982930b9fcdb6dd602aff7bc929b1))
+* **deps:** update dependency vue to v3.3.12 ([ef10504](https://github.com/AthletX-org/athletx-client/commit/ef10504c56c9775f3fe1732c5f3dd555789d8abe))
+* **deps:** update dependency vue to v3.3.13 ([7702f97](https://github.com/AthletX-org/athletx-client/commit/7702f977dc63f8b690e2265e9928a97e892a6f4d))
+* **deps:** update dependency vue to v3.3.8 ([8a510c3](https://github.com/AthletX-org/athletx-client/commit/8a510c3bde48189f7c0120f23e440b3125336b09))
+* **deps:** update dependency vue to v3.3.9 ([5e2c916](https://github.com/AthletX-org/athletx-client/commit/5e2c9162d176331c79769c982d9ffe6e264d6bed))
+* **deps:** update dependency vue to v3.4.0 ([77ca65f](https://github.com/AthletX-org/athletx-client/commit/77ca65f62ede921dc42fd6575c15f7b978e7f6f7))
+* **deps:** update dependency vue to v3.4.1 ([b72b5bb](https://github.com/AthletX-org/athletx-client/commit/b72b5bb1cbda67c01d033c163d6ade2583c47eea))
+* **deps:** update dependency vue to v3.4.3 ([c8e7f1e](https://github.com/AthletX-org/athletx-client/commit/c8e7f1e5fa112c820794ac10a7ee12398c41fa5d))
+* **deps:** update dependency vue to v3.4.4 ([b33a647](https://github.com/AthletX-org/athletx-client/commit/b33a647eb250fffca4c776fedb7128319ab90f4c))
+* **deps:** update dependency vue to v3.4.5 ([d88199d](https://github.com/AthletX-org/athletx-client/commit/d88199d442bd73754ec92d4c02eedb2b2c6257d7))
+* **deps:** update dependency vuetify to v3.4.0 ([5e054ec](https://github.com/AthletX-org/athletx-client/commit/5e054ec6ce23c4c4726f1d741ad3ceafbbb5d4cb))
+* **deps:** update dependency vuetify to v3.4.1 ([b4e1e45](https://github.com/AthletX-org/athletx-client/commit/b4e1e45e5831788d67aa722731b608ecc0c76a3a))
+* **deps:** update dependency vuetify to v3.4.2 ([efc1128](https://github.com/AthletX-org/athletx-client/commit/efc1128381399e5a8690024dee262c42c31676eb))
+* **deps:** update dependency vuetify to v3.4.3 ([502fc10](https://github.com/AthletX-org/athletx-client/commit/502fc103f9b9785ec530abc4c40a2bada664ded7))
+* **deps:** update dependency vuetify to v3.4.4 ([ef6af2c](https://github.com/AthletX-org/athletx-client/commit/ef6af2cd4485c7a45818152b569e8c1fbdc5bea5))
+* **deps:** update dependency vuetify to v3.4.5 ([1cde3ac](https://github.com/AthletX-org/athletx-client/commit/1cde3acfae2c8a8bef5ec55243d68b00847b4007))
+* **deps:** update dependency vuetify to v3.4.6 ([732965d](https://github.com/AthletX-org/athletx-client/commit/732965d38aa19e71928f0f2644f1883ef894e622))
+* **deps:** update dependency vuetify to v3.4.7 ([00bdd42](https://github.com/AthletX-org/athletx-client/commit/00bdd4265847eb98024b71da646d5eb94ad65662))
+* **deps:** update dependency vuetify to v3.4.8 ([942fd1b](https://github.com/AthletX-org/athletx-client/commit/942fd1b6ff7b46160fbde94dd76c99d056bbaf0b))
+* **deps:** update dependency vuetify to v3.4.9 ([7ffe569](https://github.com/AthletX-org/athletx-client/commit/7ffe569f3d83e05679495e3006e0c5ac92b17466))
+* **deps:** update dependency webpack-plugin-vuetify to v3 ([c521725](https://github.com/AthletX-org/athletx-client/commit/c5217258ca08a1d7046e2a7f4f508821171a499e))
+* **deps:** update node.js to 20.10 ([3eaf575](https://github.com/AthletX-org/athletx-client/commit/3eaf5751ae42966bf830c79566aebc385d507e5e))
+
+
+### Bug Fixes
+
+* add language attribute ([4e50e2c](https://github.com/AthletX-org/athletx-client/commit/4e50e2c4d0fbe77fc0afa9741a44155e47b4d274))
+
+
+### Build and continuous integration
+
+* **deps:** update smartoperatingblock/release-and-delivery-action action to v1.0.11 ([6022610](https://github.com/AthletX-org/athletx-client/commit/6022610ccd280856059dd9736febb1011f58ae19))
+
+
+### Refactoring
+
+* refactor some code ([5ae3c04](https://github.com/AthletX-org/athletx-client/commit/5ae3c04d46d3c5782952b6a314adb92a402bdb08))
+
 ## [1.2.0](https://github.com/AthletX-org/athletx-client/compare/1.1.1...1.2.0) (2023-11-03)
 
 
