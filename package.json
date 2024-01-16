@@ -33,7 +33,7 @@
     "eslint-plugin-vue": "^9.0.0",
     "semantic-release-preconfigured-conventional-commits": "1.1.85",
     "sass": "^1.66.1",
-    "sass-loader": "^13.3.2"
+    "sass-loader": "^14.0.0"
   },
   "eslintConfig": {
     "root": true,
