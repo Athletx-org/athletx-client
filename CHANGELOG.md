@@ -1,3 +1,28 @@
+## [1.2.2](https://github.com/AthletX-org/athletx-client/compare/1.2.1...1.2.2) (2024-01-18)
+
+
+### Dependency updates
+
+* **deps:** update dependency @vuepic/vue-datepicker to v7.4.1 ([1d65a81](https://github.com/AthletX-org/athletx-client/commit/1d65a8186809db9c62ad06bccf44c3ee3174e896))
+* **deps:** update dependency eslint-plugin-vue to v9.20.0 ([e6bdfa1](https://github.com/AthletX-org/athletx-client/commit/e6bdfa1760c35fb9f858dee6518a04311c017dc5))
+* **deps:** update dependency eslint-plugin-vue to v9.20.1 ([df55c7d](https://github.com/AthletX-org/athletx-client/commit/df55c7d7865fa9e8469f980a14a4ffcf3630dbf8))
+* **deps:** update dependency sass to v1.70.0 ([881eef0](https://github.com/AthletX-org/athletx-client/commit/881eef0b023fd1f118dac8ffbd05eaf350de2b44))
+* **deps:** update dependency sass-loader to v14 ([e735ce5](https://github.com/AthletX-org/athletx-client/commit/e735ce5b7a7f4f8c0636cec523290bc8ccc84b24))
+* **deps:** update dependency vue to v3.4.10 ([9a3e443](https://github.com/AthletX-org/athletx-client/commit/9a3e44392cc7bd7e28ca9e425104514635309ca4))
+* **deps:** update dependency vue to v3.4.11 ([35758dd](https://github.com/AthletX-org/athletx-client/commit/35758dd32e71999d3831cca82bd7ff578829aab4))
+* **deps:** update dependency vue to v3.4.13 ([6fd7be2](https://github.com/AthletX-org/athletx-client/commit/6fd7be2c6d8500d286c3b83f2daf3951e974fd0b))
+* **deps:** update dependency vue to v3.4.14 ([0744ad1](https://github.com/AthletX-org/athletx-client/commit/0744ad1efa25088391bcc9251507cc100740792e))
+* **deps:** update dependency vue to v3.4.6 ([8225da6](https://github.com/AthletX-org/athletx-client/commit/8225da6b72887bb48fd40654f4540aa4c5ef5bad))
+* **deps:** update dependency vue to v3.4.7 ([92a4e77](https://github.com/AthletX-org/athletx-client/commit/92a4e77999ff5f3fc11042066ded1f3443d12e34))
+* **deps:** update dependency vue to v3.4.8 ([ac1c464](https://github.com/AthletX-org/athletx-client/commit/ac1c464aecc038a40ca6808ead8ae063443f0cc4))
+* **deps:** update dependency vuetify to v3.4.10 ([80ba115](https://github.com/AthletX-org/athletx-client/commit/80ba115ae17c943ff3089e13399e243306e813f4))
+* **deps:** update node.js to 20.11 ([86c05ec](https://github.com/AthletX-org/athletx-client/commit/86c05ecfefa7d8734a21d1de45bd679007160f05))
+
+
+### Bug Fixes
+
+* fix axios bug in post request ([a31bb79](https://github.com/AthletX-org/athletx-client/commit/a31bb79314168183137a459538fa22d692e89a1a))
+
 ## [1.2.1](https://github.com/AthletX-org/athletx-client/compare/1.2.0...1.2.1) (2024-01-08)
 
 
