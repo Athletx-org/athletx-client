@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/AthletX-org/athletx-client/compare/1.2.2...1.2.3) (2024-01-18)
+
+
+### Bug Fixes
+
+* fix axios bug in patch request ([8e9e5c3](https://github.com/AthletX-org/athletx-client/commit/8e9e5c358c274d2174b4eab59add87bc801129a5))
+
 ## [1.2.2](https://github.com/AthletX-org/athletx-client/compare/1.2.1...1.2.2) (2024-01-18)
 
 
