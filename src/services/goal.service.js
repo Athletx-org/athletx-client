@@ -10,7 +10,7 @@ class GoalService{
         return await axiosInstance.post("/" + userId + "/goals", goal, {headers: authHeader()})
     }
     async setGoalAsAchieved(userId, goalId){
-        return await axiosInstance.patch("/" + userId + "/goals/" + goalId, {headers: authHeader()})
+        return await axiosInstance.patch("/" + userId + "/goals/" + goalId, {}, {headers: authHeader()})
     }
 }
 
