@@ -65,7 +65,8 @@ class WorkoutService {
 
   async copyWorkout(userId, workoutId) {
     const response = await axiosInstance.post(
-      "/" + userId + "/workouts/" + workoutId,
+      "/" + userId + "/workouts/" + workoutId, 
+      {},
       {
         headers: authHeader(),
       }
