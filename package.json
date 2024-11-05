@@ -9,7 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@vuepic/vue-datepicker": "^9.0.0",
+    "@vuepic/vue-datepicker": "^10.0.0",
     "apexcharts": "^3.42.0",
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
